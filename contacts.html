@@ -27,36 +27,159 @@
 
     <main class="section">
       <div class="container">
-        <h1>Контакты</h1>
+        <h1 id="contacts-title">Контакты</h1>
         <p class="lead">Свяжитесь удобным способом</p>
 
-        <div class="contact-cards">
-          <a class="contact-card" href="tel:+79619797259">
-            <span class="contact-card__title">Телефон</span>
-            <span class="contact-card__value">+7 961 979-72-59</span>
-          </a>
-          <a
-            class="contact-card"
-            href="https://wa.me/79619797259"
-            target="_blank"
-            rel="noopener"
-          >
-            <span class="contact-card__title">WhatsApp</span>
-            <span class="contact-card__value">Написать в WhatsApp</span>
-          </a>
-          <a
-            class="contact-card"
-            href="https://t.me/LLCALTAYCENTER"
-            target="_blank"
-            rel="noopener"
-          >
-            <span class="contact-card__title">Telegram</span>
-            <span class="contact-card__value">@LLCALTAYCENTER</span>
-          </a>
-          <a class="contact-card" href="mailto:altaycenterllc@mail.ru">
-            <span class="contact-card__title">Email</span>
-            <span class="contact-card__value">altaycenterllc@mail.ru</span>
-          </a>
+        <div class="contacts-grid" aria-labelledby="contacts-title">
+          <!-- Фото руководителя -->
+          <figure class="contact-photo">
+            <picture>
+              <!-- Современные браузеры: WebP -->
+              <source
+                type="image/webp"
+                srcset="
+                  assets/img/rukovoditel-600.webp   600w,
+                  assets/img/rukovoditel-900.webp   900w,
+                  assets/img/rukovoditel-1200.webp 1200w
+                "
+                sizes="(min-width: 900px) 420px, 92vw"
+              />
+              <!-- Fallback: JPEG -->
+              <img
+                src="assets/img/rukovoditel-900.jpg"
+                srcset="
+                  assets/img/rukovoditel-600.jpg   600w,
+                  assets/img/rukovoditel-900.jpg   900w,
+                  assets/img/rukovoditel-1200.jpg 1200w
+                "
+                sizes="(min-width: 900px) 420px, 92vw"
+                alt="Александр Минеев — руководитель компании"
+                loading="lazy"
+                decoding="async"
+                width="900"
+                height="1200"
+                style="aspect-ratio: 3 / 4; object-fit: cover"
+              />
+            </picture>
+            <figcaption>Елена Измайлова — руководитель компании</figcaption>
+          </figure>
+
+          <!-- Карточки контактов -->
+          <div>
+            <nav class="contact-cards" aria-label="Способы связи">
+              <a class="contact-card" href="tel:+79619797259">
+                <span class="contact-card__icon" aria-hidden="true">
+                  <!-- phone -->
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-device-mobile"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path
+                      d="M6 5a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2v-14z"
+                    />
+                    <path d="M11 4h2" />
+                    <path d="M12 17v.01" />
+                  </svg>
+                </span>
+                <span class="contact-card__title">Телефон</span>
+                <span class="contact-card__value">+7 961 979-72-59</span>
+              </a>
+
+              <a
+                class="contact-card"
+                href="https://wa.me/79619797259"
+                target="_blank"
+                rel="noopener"
+              >
+                <span class="contact-card__icon" aria-hidden="true">
+                  <!-- chat/message -->
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-brand-whatsapp"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
+                    <path
+                      d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1"
+                    />
+                  </svg>
+                </span>
+                <span class="contact-card__title">WhatsApp</span>
+                <span class="contact-card__value">Написать в WhatsApp</span>
+              </a>
+
+              <a
+                class="contact-card"
+                href="https://t.me/LLCALTAYCENTER"
+                target="_blank"
+                rel="noopener"
+              >
+                <span class="contact-card__icon" aria-hidden="true">
+                  <!-- paper-plane (telegram-like, но без логотипа) -->
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-brand-telegram"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M15 10l-4 4l6 6l4 -16l-18 7l4 2l2 6l3 -4" />
+                  </svg>
+                </span>
+                <span class="contact-card__title">Telegram</span>
+                <span class="contact-card__value">@LLCALTAYCENTER</span>
+              </a>
+
+              <a class="contact-card" href="mailto:altaycenterllc@mail.ru">
+                <span class="contact-card__icon" aria-hidden="true">
+                  <!-- mail -->
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-mail"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path
+                      d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"
+                    />
+                    <path d="M3 7l9 6l9 -6" />
+                  </svg>
+                </span>
+                <span class="contact-card__title">Email</span>
+                <span class="contact-card__value">altaycenterllc@mail.ru</span>
+              </a>
+            </nav>
+          </div>
         </div>
       </div>
     </main>

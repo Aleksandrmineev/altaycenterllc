@@ -1,3 +1,6 @@
+/* ==============================
+   HERO SECTION
+   ============================== */
 .hero {
   position: relative;
   min-height: 105dvh;
@@ -5,6 +8,7 @@
   place-items: center;
   isolation: isolate;
 }
+
 .hero__video {
   position: absolute;
   inset: 0;
@@ -13,13 +17,8 @@
   object-fit: cover;
   z-index: 0;
 }
-/* .hero__overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, var(--overlay1), var(--overlay2));
-  z-index: 1;
-  pointer-events: none;
-} */
+
+/* — Мягкий световой оверлей поверх видео — */
 .hero__overlay {
   position: absolute;
   inset: 0;
@@ -32,22 +31,65 @@
   z-index: 1;
   pointer-events: none;
 }
+
 .hero__inner {
   position: relative;
   z-index: 2;
   text-align: center;
 }
 
-/* лёгкая мягкая тень под текстами hero */
+/* ==============================
+     ТЕКСТ + КНОПКИ СВЕРХУ ВИДЕО
+     ============================== */
+
+/* базовое свечение для всех on-media текстов */
 .hero__inner h1,
 .hero__inner p,
 .hero__inner .btn {
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.45), 0 0 16px rgba(0, 0, 0, 0.25);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.55), 0 0 20px rgba(0, 0, 0, 0.35),
+    0 0 32px rgba(0, 0, 0, 0.25);
+  transition: text-shadow 0.3s ease;
 }
 
-/* можно чуть усилить для белых кнопок */
+/* — Дополнительное свечение при наведении — */
+.hero__inner .btn:hover,
+.hero__inner .btn:focus {
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.45),
+    0 0 36px rgba(0, 0, 0, 0.35);
+}
+
+/* — Более глубокие тени для основных CTA-кнопок — */
 .hero__inner .btn--primary {
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35), 0 0 18px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45), 0 0 28px rgba(0, 0, 0, 0.35),
+    0 0 40px rgba(0, 0, 0, 0.25);
+}
+
+/* — Белые или прозрачные кнопки со светоотражением — */
+.hero__inner .btn--ghost {
+  color: #fff;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.4),
+    0 0 20px rgba(255, 255, 255, 0.25);
+}
+
+/* ==============================
+     LIGHT THEME (мягкое свечение вместо теней)
+     ============================== */
+[data-theme="light"] .hero__inner h1,
+[data-theme="light"] .hero__inner p,
+[data-theme="light"] .hero__inner .btn {
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.85),
+    0 0 16px rgba(255, 255, 255, 0.75), 0 0 28px rgba(255, 255, 255, 0.55);
+}
+
+/* для кнопок в светлой теме — мягкое сияние */
+[data-theme="light"] .hero__inner .btn--primary {
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.7),
+    0 0 24px rgba(255, 255, 255, 0.5);
+}
+
+[data-theme="light"] .hero__inner .btn--ghost {
+  color: #111;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.15), 0 0 18px rgba(0, 0, 0, 0.1);
 }
 
 /* WHY SECTION */
@@ -445,7 +487,7 @@
 
 /* active state */
 .route__item.active .route__body {
-  max-height: 160px; /* при длинных текстах увеличь */
+  max-height: 360px;
   opacity: 1;
 }
 

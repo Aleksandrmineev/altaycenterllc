@@ -56,12 +56,9 @@
         playsinline
         webkit-playsinline
         preload="metadata"
-        poster="assets/img/poster.jpg"
+        poster="assets/img/poster.webp"
       >
-        <!-- iOS/Safari чаще всего выберет MP4 -->
         <source src="assets/video/hero-bg.mp4" type="video/mp4" />
-        <!-- Chrome/Android/современные десктопы с радостью возьмут WebM -->
-        <source src="assets/video/hero-bg.webm" type="video/webm" />
         Ваш браузер не поддерживает видео.
       </video>
 
@@ -280,9 +277,9 @@
           webkit-playsinline
           loop
           preload="none"
-          poster="assets/img/altai-poster.jpg"
+          poster="assets/img/altai-poster.jpeg"
         >
-          <source src="assets/video/altai-loop.webm" type="video/webm" />
+          <source src="assets/video/altai-loop.mp4" type="video/mp4" />
         </video>
       </div>
 
@@ -594,20 +591,18 @@
           controls
           playsinline
           preload="metadata"
-          poster="assets/img/altai-poster.jpg"
+          poster="assets/img/altai-poster.jpeg"
         >
-          <source src="assets/video/altai-film.webm" type="video/webm" />
-          Ваш браузер не поддерживает видео WebM.
+          <source src="assets/video/altai-film.mp4" type="video/mp4" />
+          Ваш браузер не поддерживает видео.
         </video>
 
-        <!-- интерактивные главы внутри модалки -->
         <div class="cinema__chapters">
           <button class="chip" data-seek="0">Вдохновение · 0:00</button>
           <button class="chip" data-seek="30">Гармония · 0:30</button>
           <button class="chip" data-seek="120">Возвращение · 2:00</button>
         </div>
 
-        <!-- end-slate появляется по окончании -->
         <div class="cinema__end" hidden>
           <h3>Алтай — не только пространство.</h3>
           <p>Это возможность для жизни и отдыха.</p>

@@ -60,75 +60,132 @@ function bindPopup() {
 
 // === Cinema (модальный плеер) — iOS-safe ===
 (function () {
-  const openBtn = document.querySelector("[data-open-cinema]");
   const cinema = document.getElementById("cinema");
   const video = document.getElementById("cinemaVideo");
-  if (!openBtn || !cinema || !video) return;
+  if (!cinema || !video) return;
 
-  const open = (e) => {
-    e.preventDefault();
+  const openBtns = document.querySelectorAll("[data-open-cinema]");
+  const endSlate = cinema.querySelector(".cinema__end");
+
+  // Полезные флаги
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+  const mp4Src = "assets/video/altai-film.mp4"; // проверь путь/кодеки H.264 + AAC
+
+  // Гарантируем корректный источник для iOS
+  function ensureMP4Source() {
+    // Если уже прямой src на mp4 — ничего не делаем
+    if (video.src && video.src.endsWith(".mp4")) return;
+    // Ставим явный src на mp4 (обходит капризы <source> в Safari)
+    video.src = mp4Src;
+    video.load();
+  }
+
+  async function tryPlayFromStart() {
+    try {
+      if (video.ended || video.currentTime > 0) video.currentTime = 0;
+      const p = video.play();
+      if (p && typeof p.then === "function") await p;
+      return true;
+    } catch (err) {
+      // В крайнем случае включим controls, чтобы пользователь ткнул ещё раз
+      video.controls = true;
+      return false;
+    }
+  }
+
+  async function open(e) {
+    e?.preventDefault?.();
+
+    // Сняли hidden синхронно (в рамках клика)
     cinema.hidden = false;
     document.documentElement.style.overflow = "hidden";
+    endSlate?.setAttribute("hidden", "");
 
-    // Критично: play() вызываем в ЭТОМ ЖЕ обработчике клика
-    const p = video.play();
-    if (p && typeof p.then === "function") {
-      p.catch(() => {
-        // iOS/Safari всё ещё может потребовать явный tap → показываем controls
-        video.controls = true;
-      });
+    // На iOS — форсим mp4 напрямую
+    if (isIOS) ensureMP4Source();
+
+    // Пытаемся воспроизвести сразу (в том же клике)
+    const ok = await tryPlayFromStart();
+
+    // Только после успешного play — можно просить fullscreen на мобилке
+    if (ok && window.innerWidth < 768) {
+      const el = video;
+      const reqFs =
+        el.requestFullscreen ||
+        el.webkitRequestFullscreen ||
+        el.msRequestFullscreen;
+      if (reqFs) {
+        try {
+          await reqFs.call(el);
+        } catch (_) {}
+      }
     }
+  }
 
-    // Можно просить fullscreen ЧУТЬ позже — звук уже «разрешён» кликом
-    if (window.innerWidth < 768 && video.requestFullscreen) {
-      setTimeout(() => video.requestFullscreen().catch(() => {}), 80);
-    }
-  };
-
-  const close = () => {
+  function close() {
     cinema.hidden = true;
     document.documentElement.style.overflow = "";
     try {
       video.pause();
     } catch {}
-    cinema.querySelector(".cinema__end")?.setAttribute("hidden", "");
-  };
+    // Желательно вернуть постер/начало, чтобы при следующем открытии старт был с 0
+    // video.currentTime = 0; // по желанию
+    endSlate?.setAttribute("hidden", "");
+  }
 
-  openBtn.addEventListener("click", open);
+  // Открытие со всех кнопок
+  openBtns.forEach((btn) => btn.addEventListener("click", open));
+
+  // Закрытие по подложке/крестику
   cinema.addEventListener("click", (e) => {
     if (e.target.closest("[data-cinema-close]")) close();
   });
+
+  // Esc
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && !cinema.hidden) close();
   });
 
-  // Глава-чипы внутри модалки (jump-to) — тоже в прямом обработчике
+  // Чипы внутри модалки — прыжок без таймаутов
   cinema.querySelectorAll("[data-seek]").forEach((btn) => {
-    btn.addEventListener("click", () => {
+    btn.addEventListener("click", async () => {
       const t = +btn.getAttribute("data-seek") || 0;
       try {
+        // Если метаданные ещё не загружены — дождёмся
+        if (video.readyState < 1) {
+          await new Promise((res) => {
+            const onMeta = () => {
+              video.removeEventListener("loadedmetadata", onMeta);
+              res();
+            };
+            video.addEventListener("loadedmetadata", onMeta, { once: true });
+            video.load();
+          });
+        }
         video.currentTime = t;
-        video.play();
+        await video.play().catch(() => {});
       } catch {}
     });
   });
 
-  // Чипы на секции: сначала открываем, потом прыгаем
+  // Чипы вне модалки (в секции) — открываем и после метаданных прыгаем
   document.querySelectorAll(".film [data-seek]").forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      open(e); // откроет и попытается play() в том же клике
+    btn.addEventListener("click", async (e) => {
+      await open(e); // модалка+play в том же клике
       const t = +btn.getAttribute("data-seek") || 0;
-      setTimeout(() => {
-        try {
-          video.currentTime = t;
-          video.play();
-        } catch {}
-      }, 120);
+      // Ждём метаданные (без setTimeout)
+      if (video.readyState < 1) {
+        await new Promise((res) => {
+          video.addEventListener("loadedmetadata", () => res(), { once: true });
+          video.load();
+        });
+      }
+      video.currentTime = t;
+      await video.play().catch(() => {});
     });
   });
 
-  // End-slate после окончания
-  const endSlate = cinema.querySelector(".cinema__end");
+  // Показ end-slate после окончания
   video.addEventListener("ended", () => {
     if (endSlate) endSlate.hidden = false;
   });

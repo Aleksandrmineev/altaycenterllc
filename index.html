@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Путь Рериха — авторский тур по Алтаю</title>
+    <meta
+      name="description"
+      content="6 дней / 5 ночей · Комфорт+ · Белуха, Уймон, Башталинское плато. Пройдите по тропам, где Николай Рерих искал Беловодье."
+    />
+    <link
+      rel="preload"
+      href="assets/fonts/inter-regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="assets/fonts/montserrat-bold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="stylesheet" href="assets/css/global.css" />
+    <link rel="stylesheet" href="assets/css/layout.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+    <link rel="stylesheet" href="assets/css/sections.css" />
+    <link rel="stylesheet" href="assets/css/animations.css" />
+  </head>
+  <body>
+    <!-- top bar (меню добавим позже) -->
+    <header class="site-header">
+      <div class="container header__row">
+        <a class="brand" href="/">АЛТАЙЦЕНТР</a>
+        <nav class="header__actions">
+          <a class="link-muted" href="contacts.html">Контакты</a>
+          <button
+            id="themeToggle"
+            class="btn btn--ghost"
+            aria-label="Переключить тему"
+          >
+            🌙
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" aria-label="Путь Рериха — авторский тур по Алтаю">
+      <video
+        class="hero__video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        poster="assets/img/poster.webp"
+      >
+        <source src="assets/video/hero-bg.mp4" type="video/mp4" />
+      </video>
+      <div class="hero__overlay" aria-hidden="true"></div>
+
+      <div class="container hero__inner reveal">
+        <h1 class="hero__title on-media text-outline">
+          Путь Рериха — авторский тур по Алтаю
+        </h1>
+        <p class="hero__subtitle on-media">
+          6 дней / 5 ночей · Комфорт+ · Белуха, Уймон, Башталинское плато<br />
+          Пройдите по тропам, где Николай Рерих искал Беловодье, и услышите своё
+          сердце.
+        </p>
+        <div class="hero__actions on-media">
+          <button class="btn btn--primary" data-open-popup="booking">
+            Забронировать тур
+          </button>
+          <a
+            class="btn btn--ghost"
+            href="assets/Путь-Рериха-программа.pdf"
+            target="_blank"
+            rel="noopener"
+            >Скачать программу PDF</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--why reveal" id="why">
+      <div class="container">
+        <h2 class="section__title">Почему стоит поехать именно с нами</h2>
+
+        <div class="features-grid">
+          <div class="feature">
+            <svg
+              class="feature__icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-map-search"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M11 18l-2 -1l-6 3v-13l6 -3l6 3l6 -3v7.5" />
+              <path d="M9 4v13" />
+              <path d="M15 7v5" />
+              <path d="M18 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+              <path d="M20.2 20.2l1.8 1.8" />
+            </svg>
+            <h3 class="feature__title">По следам Рериха</h3>
+            <p class="feature__text">
+              Маршрут повторяет экспедицию Николая Рериха 1926 года — от Бийска
+              до Белухи.
+            </p>
+          </div>
+
+          <div class="feature">
+            <svg
+              class="feature__icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-mountain"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path
+                d="M3 20h18l-6.921 -14.612a2.3 2.3 0 0 0 -4.158 0l-6.921 14.612z"
+              />
+              <path d="M7.5 11l2 2.5l2.5 -2.5l2 3l2.5 -2" />
+            </svg>
+            <h3 class="feature__title">Энергия мест силы</h3>
+            <p class="feature__text">
+              Белуха, Уймон и Баштала — сакральные точки, где чувствуется
+              дыхание Алтая.
+            </p>
+          </div>
+
+          <div class="feature">
+            <svg
+              class="feature__icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-beach"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M17.553 16.75a7.5 7.5 0 0 0 -10.606 0" />
+              <path
+                d="M18 3.804a6 6 0 0 0 -8.196 2.196l10.392 6a6 6 0 0 0 -2.196 -8.196z"
+              />
+              <path
+                d="M16.732 10c1.658 -2.87 2.225 -5.644 1.268 -6.196c-.957 -.552 -3.075 1.326 -4.732 4.196"
+              />
+              <path d="M15 9l-3 5.196" />
+              <path
+                d="M3 19.25a2.4 2.4 0 0 1 1 -.25a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 1 .25"
+              />
+            </svg>
+            <h3 class="feature__title">Комфорт и душевная атмосфера</h3>
+            <p class="feature__text">
+              Отели и баня по программе — отдых с вниманием к деталям и заботой
+              о вас.
+            </p>
+          </div>
+
+          <div class="feature">
+            <svg
+              class="feature__icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-brand-safari"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M8 16l2 -6l6 -2l-2 6l-6 2" />
+              <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+            </svg>
+            <h3 class="feature__title">Авторское сопровождение</h3>
+            <p class="feature__text">
+              Гид-культуролог, рассказывающий о символах и легендах Алтая.
+            </p>
+          </div>
+
+          <div class="feature">
+            <svg
+              class="feature__icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-brush"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M3 21v-4a4 4 0 1 1 4 4h-4" />
+              <path d="M21 3a16 16 0 0 0 -12.8 10.2" />
+              <path d="M21 3a16 16 0 0 1 -10.2 12.8" />
+              <path d="M10.6 9a9 9 0 0 1 4.4 4.4" />
+            </svg>
+            <h3 class="feature__title">Мастер-класс и вечер у костра</h3>
+            <p class="feature__text">
+              Рисуем пейзаж Белухи и делимся впечатлениями под звёздами.
+            </p>
+          </div>
+
+          <div class="feature">
+            <svg
+              class="feature__icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-heart-handshake"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path
+                d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572"
+              />
+              <path
+                d="M12 6l-3.293 3.293a1 1 0 0 0 0 1.414l.543 .543c.69 .69 1.81 .69 2.5 0l1 -1a3.182 3.182 0 0 1 4.5 0l2.25 2.25"
+              />
+              <path d="M12.5 15.5l2 2" />
+              <path d="M15 13l2 2" />
+            </svg>
+            <h3 class="feature__title">Прозрачная организация</h3>
+            <p class="feature__text">
+              Лицензированный туроператор, финансовые гарантии и открытые
+              условия.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==== SECTION: Фильм об Алтае ==== -->
+    <section class="section film reveal" id="film">
+      <!-- фон: короткий луп (если файла нет, покажется постер) -->
+      <div class="film__bg">
+        <video
+          class="film__loop"
+          autoplay
+          muted
+          playsinline
+          loop
+          preload="none"
+          poster="assets/img/altai-poster.jpg"
+        >
+          <source src="assets/video/altai-loop.webm" type="video/webm" />
+        </video>
+      </div>
+
+      <div class="container film__inner">
+        <h2 class="film__title on-media text-outline">
+          Алтай, который остаётся в сердце
+        </h2>
+        <p class="film__lead on-media">
+          Когда видишь — чувствуешь. Когда чувствуешь — живёшь по-настоящему.
+        </p>
+
+        <div class="film__actions on-media">
+          <button class="btn btn--primary" data-open-cinema>
+            ▶ Смотреть фильм (3:00)
+          </button>
+          <a
+            class="btn btn--ghost on-media"
+            href="assets/Путь-Рериха-программа.pdf"
+            target="_blank"
+            rel="noopener"
+            >Скачать программу</a
+          >
+        </div>
+
+        <!-- главы (чипы) — просто аннотации на этом экране -->
+        <div class="film__chapters on-media">
+          <button class="chip on-media" data-seek="0">
+            Вдохновение · 0:00
+          </button>
+          <button class="chip on-media" data-seek="30">Гармония · 0:30</button>
+          <button class="chip on-media" data-seek="120">
+            Возвращение · 2:00
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==== MODAL: Кинотеатр ==== -->
+    <div class="cinema" id="cinema" hidden>
+      <div class="cinema__backdrop" data-cinema-close></div>
+      <div class="cinema__window" role="dialog" aria-label="Фильм об Алтае">
+        <button class="cinema__close" aria-label="Закрыть" data-cinema-close>
+          ×
+        </button>
+
+        <video
+          id="cinemaVideo"
+          class="cinema__video"
+          controls
+          playsinline
+          preload="metadata"
+          poster="assets/img/altai-poster.jpg"
+        >
+          <source src="assets/video/altai-film.webm" type="video/webm" />
+          Ваш браузер не поддерживает видео WebM.
+        </video>
+
+        <!-- интерактивные главы внутри модалки -->
+        <div class="cinema__chapters">
+          <button class="chip" data-seek="0">Вдохновение · 0:00</button>
+          <button class="chip" data-seek="30">Гармония · 0:30</button>
+          <button class="chip" data-seek="120">Возвращение · 2:00</button>
+        </div>
+
+        <!-- end-slate появляется по окончании -->
+        <div class="cinema__end" hidden>
+          <h3>Алтай — не только пространство.</h3>
+          <p>Это возможность для жизни и отдыха.</p>
+          <div class="cinema__cta">
+            <button class="btn btn--primary" data-open-popup="booking">
+              Забронировать тур
+            </button>
+            <a
+              class="btn btn--ghost"
+              href="assets/Путь-Рериха-программа.pdf"
+              target="_blank"
+              rel="noopener"
+              >Скачать программу</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- POPUP (подключается универсально) -->
+    <div id="popup-root"></div>
+
+    <footer class="site-footer">
+      <div class="container footer__row">
+        <small>© АлтайЦентр</small>
+        <nav class="footer__links">
+          <a href="contacts.html">Контакты</a>
+          <a href="#why">О туре</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script src="assets/js/ui.js" defer></script>
+    <script src="assets/js/anim.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
+  </body>
+</html>

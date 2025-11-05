@@ -1,0 +1,58 @@
+<!-- Универсальный попап бронирования -->
+<div
+  class="popup"
+  data-popup="booking"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Заявка на бронирование"
+  hidden
+>
+  <div class="popup__backdrop" data-close-popup></div>
+  <div class="popup__window" role="document">
+    <button class="popup__close" data-close-popup aria-label="Закрыть">
+      ×
+    </button>
+    <h3 class="popup__title">Забронировать тур</h3>
+    <form class="form" id="bookingForm">
+      <label class="form__field">
+        <span>Имя</span>
+        <input type="text" name="name" required autocomplete="name" />
+      </label>
+      <label class="form__field">
+        <span>Телефон / WhatsApp / Telegram</span>
+        <input type="text" name="contact" required placeholder="+7 ..." />
+      </label>
+      <label class="form__field">
+        <span>Желаемые даты</span>
+        <input
+          type="text"
+          name="dates"
+          placeholder="например: июль, 2 взрослых"
+        />
+      </label>
+      <label class="form__field">
+        <span>Комментарий</span>
+        <textarea
+          name="message"
+          rows="3"
+          placeholder="Пожелания, вопросы"
+        ></textarea>
+      </label>
+      <label class="form__check">
+        <input type="checkbox" required />
+        <span>Согласен на обработку персональных данных</span>
+      </label>
+      <div class="form__actions">
+        <button class="btn btn--primary" type="submit">Отправить</button>
+        <button class="btn btn--ghost" type="button" data-close-popup>
+          Отмена
+        </button>
+      </div>
+      <p class="form__note">
+        Или свяжитесь напрямую: <a href="tel:+79619797259">+7 961 979-72-59</a>,
+        <a href="https://wa.me/79619797259" target="_blank">WhatsApp</a>,
+        <a href="https://t.me/LLCALTAYCENTER" target="_blank">Telegram</a>
+      </p>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Контакты — АлтайЦентр</title>
+    <link rel="stylesheet" href="assets/css/global.css" />
+    <link rel="stylesheet" href="assets/css/layout.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header__row">
+        <a class="brand" href="/">АЛТАЙЦЕНТР</a>
+        <nav class="header__actions">
+          <a class="link-muted" href="/">Главная</a>
+          <button
+            id="themeToggle"
+            class="btn btn--ghost"
+            aria-label="Переключить тему"
+          >
+            🌙
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="section">
+      <div class="container">
+        <h1>Контакты</h1>
+        <p class="lead">Свяжитесь удобным способом — мы отвечаем оперативно.</p>
+
+        <div class="contact-cards">
+          <a class="contact-card" href="tel:+79619797259">
+            <span class="contact-card__title">Телефон</span>
+            <span class="contact-card__value">+7 961 979-72-59</span>
+          </a>
+          <a
+            class="contact-card"
+            href="https://wa.me/79619797259"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="contact-card__title">WhatsApp</span>
+            <span class="contact-card__value">Написать в WhatsApp</span>
+          </a>
+          <a
+            class="contact-card"
+            href="https://t.me/LLCALTAYCENTER"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="contact-card__title">Telegram</span>
+            <span class="contact-card__value">@LLCALTAYCENTER</span>
+          </a>
+          <a class="contact-card" href="mailto:altai.travel@llcaltaycenter.ru">
+            <span class="contact-card__title">Email</span>
+            <span class="contact-card__value"
+              >altai.travel@llcaltaycenter.ru</span
+            >
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <div id="popup-root"></div>
+    <script src="assets/js/ui.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
+  </body>
+</html>

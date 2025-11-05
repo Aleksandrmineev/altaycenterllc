@@ -259,3 +259,225 @@
     right: 4px;
   }
 }
+
+/* ==== ROUTE SECTION (theme-aware) ==== */
+.route {
+  position: relative;
+  padding: clamp(80px, 10vw, 140px) 0;
+  background: url("../svg/route-bg.svg") center/cover no-repeat,
+    linear-gradient(180deg, var(--clr-bg) 0%, var(--clr-bg-2) 100%);
+  color: var(--clr-text);
+  overflow: hidden;
+}
+
+/* inner layout */
+.route__inner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.route__title {
+  font-family: var(--font-head);
+  font-size: var(--fs-h2);
+  margin-bottom: 0.3em;
+}
+
+.route__subtitle {
+  color: var(--clr-muted);
+  margin-bottom: 3em;
+  font-size: var(--fs-lead);
+}
+
+/* timeline */
+.route__timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* центральная линия — видима в обеих темах */
+.route__line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: color-mix(in oklab, var(--clr-accent) 65%, var(--clr-text) 35%);
+  transform: translateX(-50%);
+}
+
+/* маркеры (glow/comet) */
+.route__glow,
+.route__comet {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 12px;
+  height: 12px;
+  transform: translate(-50%, 0);
+  border-radius: 50%;
+  transition: transform 0.8s ease;
+}
+
+/* светящаяся точка */
+.route__glow {
+  background: var(--clr-accent);
+  box-shadow: 0 0 14px 6px
+      color-mix(in oklab, var(--clr-accent) 45%, transparent),
+    0 0 30px 0 color-mix(in oklab, var(--clr-accent) 30%, transparent);
+}
+
+/* комета (указатель) */
+.route__comet {
+  background: radial-gradient(
+    circle at 30% 30%,
+    #fff 0%,
+    color-mix(in oklab, #fff 70%, var(--clr-accent) 30%) 35%,
+    var(--clr-accent) 62%,
+    transparent 70%
+  );
+  filter: drop-shadow(
+    0 0 10px color-mix(in oklab, var(--clr-accent) 65%, transparent)
+  );
+  transition: transform 0.9s cubic-bezier(0.22, 0.8, 0.2, 1);
+}
+
+.route__comet::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 8px;
+  height: 36px;
+  border-radius: 8px;
+  transform: translate(-50%, -50%) rotate(90deg);
+  transform-origin: 50% 85%;
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--clr-accent) 45%, transparent),
+    transparent
+  );
+  filter: blur(3px);
+}
+
+/* items */
+.route__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.route__item {
+  position: relative;
+  margin: 60px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* общий вид карточек */
+.route__header,
+.route__body {
+  background: color-mix(in oklab, var(--clr-surface) 86%, transparent);
+  border: 1px solid color-mix(in oklab, var(--clr-text) 18%, transparent);
+  border-radius: var(--radius);
+  backdrop-filter: blur(6px);
+}
+
+/* header */
+.route__header {
+  width: calc(50% - 40px);
+  padding: 1em 1.5em;
+  color: var(--clr-text);
+  font: 600 var(--fs-base) / 1.4 var(--font-main);
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* «зиг-заг» — правые карточки */
+.route__item:nth-child(even) .route__header {
+  align-self: flex-end;
+  text-align: right;
+}
+
+/* иконка дня */
+.route__icon {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  margin-right: 0.5em;
+  border-radius: 12px;
+  background: color-mix(in oklab, var(--clr-accent) 18%, transparent);
+  outline: 1px solid color-mix(in oklab, var(--clr-accent) 45%, transparent);
+  color: var(--clr-accent);
+  font-size: 1.2em;
+}
+
+/* стрелка раскрытия — всегда контрастная */
+.route__arrow {
+  color: var(--clr-muted);
+  opacity: 0.9;
+  transition: transform 0.3s;
+}
+
+/* body */
+.route__body {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  margin-top: 8px;
+  padding: 0 1.5em;
+  transition: max-height 0.6s ease, opacity 0.6s ease;
+}
+
+.route__body p {
+  margin: 1em 0;
+  line-height: 1.55;
+  color: var(--clr-text);
+}
+
+/* active state */
+.route__item.active .route__body {
+  max-height: 160px; /* при длинных текстах увеличь */
+  opacity: 1;
+}
+
+.route__item.active .route__arrow {
+  transform: rotate(180deg);
+}
+
+.route__item.active .route__header {
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--clr-accent) 14%, var(--clr-surface) 86%),
+    color-mix(in oklab, var(--clr-surface) 86%, transparent)
+  );
+  border-color: color-mix(in oklab, var(--clr-accent) 38%, transparent);
+  box-shadow: 0 12px 36px
+    color-mix(in oklab, var(--clr-accent) 25%, transparent);
+}
+
+/* адаптив */
+@media (max-width: 900px) {
+  .route__header {
+    width: 100%;
+    text-align: left;
+  }
+  .route__item:nth-child(even) .route__header {
+    align-self: stretch;
+    text-align: left;
+  }
+  .route__line,
+  .route__glow,
+  .route__comet {
+    left: 12px;
+    transform: none;
+  }
+}

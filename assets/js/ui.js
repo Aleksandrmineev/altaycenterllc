@@ -58,26 +58,30 @@ function bindPopup() {
   });
 }
 
-// === Cinema (модальный плеер) ===
+// === Cinema (модальный плеер) — iOS-safe ===
 (function () {
   const openBtn = document.querySelector("[data-open-cinema]");
   const cinema = document.getElementById("cinema");
   const video = document.getElementById("cinemaVideo");
-
   if (!openBtn || !cinema || !video) return;
 
-  const open = async () => {
+  const open = (e) => {
+    e.preventDefault();
     cinema.hidden = false;
-    document.documentElement.style.overflow = "hidden"; // стоп скролла позади
-    try {
-      // Автовоспроизведение со звуком: в десктоп-браузерах может требовать жеста — он уже есть (клик по кнопке)
-      await video.play();
-      // На мобильных отдаём fullscreen по желанию
-      if (window.innerWidth < 768 && video.requestFullscreen) {
-        video.requestFullscreen().catch(() => {});
-      }
-    } catch (e) {
-      /* игнор, пользователь сам нажмёт play */
+    document.documentElement.style.overflow = "hidden";
+
+    // Критично: play() вызываем в ЭТОМ ЖЕ обработчике клика
+    const p = video.play();
+    if (p && typeof p.then === "function") {
+      p.catch(() => {
+        // iOS/Safari всё ещё может потребовать явный tap → показываем controls
+        video.controls = true;
+      });
+    }
+
+    // Можно просить fullscreen ЧУТЬ позже — звук уже «разрешён» кликом
+    if (window.innerWidth < 768 && video.requestFullscreen) {
+      setTimeout(() => video.requestFullscreen().catch(() => {}), 80);
     }
   };
 
@@ -86,8 +90,7 @@ function bindPopup() {
     document.documentElement.style.overflow = "";
     try {
       video.pause();
-    } catch (e) {}
-    // прячем end-slate
+    } catch {}
     cinema.querySelector(".cinema__end")?.setAttribute("hidden", "");
   };
 
@@ -99,29 +102,32 @@ function bindPopup() {
     if (e.key === "Escape" && !cinema.hidden) close();
   });
 
-  // Главы (чипы) — seek
+  // Глава-чипы внутри модалки (jump-to) — тоже в прямом обработчике
   cinema.querySelectorAll("[data-seek]").forEach((btn) => {
     btn.addEventListener("click", () => {
-      const t = Number(btn.getAttribute("data-seek") || "0");
+      const t = +btn.getAttribute("data-seek") || 0;
       try {
         video.currentTime = t;
         video.play();
-      } catch (e) {}
-    });
-  });
-  // Дубли чипов на секции: открываем и затем прыгаем
-  document.querySelectorAll(".film [data-seek]").forEach((btn) => {
-    btn.addEventListener("click", async () => {
-      await open();
-      const t = Number(btn.getAttribute("data-seek") || "0");
-      try {
-        video.currentTime = t;
-        video.play();
-      } catch (e) {}
+      } catch {}
     });
   });
 
-  // End slate по окончании
+  // Чипы на секции: сначала открываем, потом прыгаем
+  document.querySelectorAll(".film [data-seek]").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      open(e); // откроет и попытается play() в том же клике
+      const t = +btn.getAttribute("data-seek") || 0;
+      setTimeout(() => {
+        try {
+          video.currentTime = t;
+          video.play();
+        } catch {}
+      }, 120);
+    });
+  });
+
+  // End-slate после окончания
   const endSlate = cinema.querySelector(".cinema__end");
   video.addEventListener("ended", () => {
     if (endSlate) endSlate.hidden = false;
@@ -158,5 +164,73 @@ function bindPopup() {
         if (popupTrigger) popupTrigger.click();
       }, 150);
     }
+  });
+})();
+
+// === Route timeline ===
+(function () {
+  const list = document.querySelector(".route__list");
+  const glow = document.querySelector(".route__glow");
+  if (!list || !glow) return;
+
+  list.addEventListener("click", (e) => {
+    const header = e.target.closest(".route__header");
+    if (!header) return;
+    const item = header.closest(".route__item");
+    const open = !item.classList.contains("active");
+
+    // закрыть все
+    list
+      .querySelectorAll(".route__item.active")
+      .forEach((i) => i.classList.remove("active"));
+    if (open) item.classList.add("active");
+
+    // переместить огонёк
+    const rect = item.getBoundingClientRect();
+    const parentRect = list.getBoundingClientRect();
+    const offset = rect.top - parentRect.top + rect.height / 2;
+    glow.style.transform = `translate(-50%, ${offset}px)`;
+  });
+
+  // стартовая позиция
+  const first = list.querySelector(".route__item");
+  if (first) {
+    const rect = first.getBoundingClientRect();
+    const parentRect = list.getBoundingClientRect();
+    const offset = rect.top - parentRect.top + rect.height / 2;
+    glow.style.transform = `translate(-50%, ${offset}px)`;
+  }
+})();
+
+// апдейт для маркера
+(function () {
+  const list = document.querySelector(".route__list");
+  const comet = document.querySelector(".route__comet");
+  if (!list || !comet) return;
+
+  function moveTo(item) {
+    const rItem = item.getBoundingClientRect();
+    const rList = list.getBoundingClientRect();
+    const y = rItem.top - rList.top + rItem.height / 2;
+    // легкий «догоняющий» рывок
+    comet.style.transitionTimingFunction = "cubic-bezier(.17,.84,.44,1)";
+    comet.style.transform = `translate(-50%, ${y}px)`;
+  }
+
+  // старт — к первому
+  const first = list.querySelector(".route__item");
+  if (first) moveTo(first);
+
+  list.addEventListener("click", (e) => {
+    const header = e.target.closest(".route__header");
+    if (!header) return;
+    const item = header.closest(".route__item");
+    const already = item.classList.contains("active");
+
+    list
+      .querySelectorAll(".route__item.active")
+      .forEach((i) => i.classList.remove("active"));
+    if (!already) item.classList.add("active");
+    moveTo(item);
   });
 })();

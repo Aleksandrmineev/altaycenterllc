@@ -54,12 +54,16 @@
         muted
         loop
         playsinline
+        webkit-playsinline
         preload="metadata"
-        poster="assets/img/poster.webp"
+        poster="assets/img/poster.jpg"
       >
+        <!-- iOS/Safari чаще всего выберет MP4 -->
         <source src="assets/video/hero-bg.mp4" type="video/mp4" />
+        <!-- Chrome/Android/современные десктопы с радостью возьмут WebM -->
+        <source src="assets/video/hero-bg.webm" type="video/webm" />
+        Ваш браузер не поддерживает видео.
       </video>
-      <div class="hero__overlay" aria-hidden="true"></div>
 
       <div class="container hero__inner reveal">
         <h1 class="hero__title on-media text-outline">
@@ -113,8 +117,8 @@
             </svg>
             <h3 class="feature__title">По следам Рериха</h3>
             <p class="feature__text">
-              Маршрут повторяет экспедицию Николая Рериха 1926 года — от Бийска
-              до Белухи.
+              Откройте уникальные грани Алтая сквозь призму наследия Н. К.
+              Рериха.
             </p>
           </div>
 
@@ -138,10 +142,10 @@
               />
               <path d="M7.5 11l2 2.5l2.5 -2.5l2 3l2.5 -2" />
             </svg>
-            <h3 class="feature__title">Энергия мест силы</h3>
+            <h3 class="feature__title">Энергия места силы</h3>
             <p class="feature__text">
-              Белуха, Уймон и Баштала — сакральные точки, где чувствуется
-              дыхание Алтая.
+              Посетите сакральные места Алтая, по которым около ста лет назад
+              пролегал путь экспедиции Н. К. Рериха.
             </p>
           </div>
 
@@ -199,7 +203,8 @@
             </svg>
             <h3 class="feature__title">Авторское сопровождение</h3>
             <p class="feature__text">
-              Гид-культуролог, рассказывающий о символах и легендах Алтая.
+              Гид-экскурсовод — носитель алтайской культуры, рассказывающий о
+              традициях и легендах Алтая.
             </p>
           </div>
 
@@ -272,6 +277,7 @@
           autoplay
           muted
           playsinline
+          webkit-playsinline
           loop
           preload="none"
           poster="assets/img/altai-poster.jpg"
@@ -310,6 +316,266 @@
           <button class="chip on-media" data-seek="120">
             Возвращение · 2:00
           </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==== SECTION: Маршрут по дням ==== -->
+    <section class="route reveal" id="route">
+      <div class="container route__inner">
+        <h2 class="route__title">
+          Программа путешествия по Алтаю — 6 дней, которые изменят вас
+        </h2>
+        <p class="route__subtitle">Каждый день — новый шаг к самому себе</p>
+
+        <div class="route__timeline">
+          <span class="route__line"></span>
+          <span class="route__comet" aria-hidden="true"></span>
+
+          <ul class="route__list">
+            <!-- ===== День 1 ===== -->
+            <li class="route__item">
+              <button class="route__header">
+                <span class="route__icon">
+                  <!-- mountain -->
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-mountain"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path
+                      d="M3 20h18l-6.921 -14.612a2.3 2.3 0 0 0 -4.158 0l-6.921 14.612z"
+                    />
+                    <path d="M7.5 11l2 2.5l2.5 -2.5l2 3l2.5 -2" />
+                  </svg>
+                </span>
+                <span class="route__day">День 1. Алтай — дыхание гор</span>
+                <span class="route__arrow">▼</span>
+              </button>
+              <div class="route__body">
+                <p>
+                  Встреча в Бийске — старинных воротах Алтая. Мы начнём путь с
+                  лёгкой прогулки по купеческим улочкам, заглянем в Пассаж
+                  Второва, узнаем о первых путешественниках, покорявших горы.
+                  Вечером — ужин и обрядовая баня с пар-мастером: очищение тела
+                  и ума, настрой на путешествие и соединение с энергией Алтая.
+                </p>
+              </div>
+            </li>
+
+            <!-- ===== День 2 ===== -->
+            <li class="route__item">
+              <button class="route__header">
+                <span class="route__icon">
+                  <!-- road -->
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-map-route"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M3 7l6 -3l6 3l6 -3v13l-6 3l-6 -3l-6 3v-13" />
+                    <path d="M9 12v.01" />
+                    <path d="M6 13v.01" />
+                    <path d="M17 15l-4 -4" />
+                    <path d="M13 15l4 -4" />
+                  </svg>
+                </span>
+                <span class="route__day">День 2. Вход в Храм Алтая</span>
+                <span class="route__arrow">▼</span>
+              </button>
+              <div class="route__body">
+                <p>
+                  Мы выезжаем по Чуйскому тракту — дороге, признанной одной из
+                  самых красивых в мире. Вас ждут панорамы рек, перевалы и
+                  древние легенды. Посетим традиционный айил, попробуем местные
+                  продукты, мёд и травяные чаи. К вечеру — уютный ужин и отдых с
+                  видом на горы, которые становятся всё ближе.
+                </p>
+              </div>
+            </li>
+
+            <!-- ===== День 3 ===== -->
+            <li class="route__item">
+              <button class="route__header">
+                <span class="route__icon">
+                  <!-- sparkles -->
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-camera-bolt"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path
+                      d="M13 20h-8a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h1a2 2 0 0 0 2 -2a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1a2 2 0 0 0 2 2h1a2 2 0 0 1 2 2v3.5"
+                    />
+                    <path d="M9 13a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                    <path d="M19 16l-2 3h4l-2 3" />
+                  </svg>
+                </span>
+                <span class="route__day">День 3. В поисках Беловодья</span>
+                <span class="route__arrow">▼</span>
+              </button>
+              <div class="route__body">
+                <p>
+                  Пожалуй, самый символичный день — путь к Башталинскому плато и
+                  у подножия Белухи. Это место силы, где воздух буквально
+                  вибрирует чистотой. Здесь проходит наша программа
+                  «Наполнение»: практики дыхания, тишины и внутреннего
+                  равновесия. Вы почувствуете, что Алтай говорит с вами напрямую
+                  — через ветер, свет и покой.
+                </p>
+              </div>
+            </li>
+
+            <!-- ===== День 4 ===== -->
+            <li class="route__item">
+              <button class="route__header">
+                <span class="route__icon">
+                  <!-- palette -->
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-palette"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path
+                      d="M12 21a9 9 0 0 1 0 -18c4.97 0 9 3.582 9 8c0 1.06 -.474 2.078 -1.318 2.828c-.844 .75 -1.989 1.172 -3.182 1.172h-2.5a2 2 0 0 0 -1 3.75a1.3 1.3 0 0 1 -1 2.25"
+                    />
+                    <path d="M8.5 10.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                    <path d="M12.5 7.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                    <path d="M16.5 10.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                  </svg>
+                </span>
+                <span class="route__day">День 4. Алтай — Храм души</span>
+                <span class="route__arrow">▼</span>
+              </button>
+              <div class="route__body">
+                <p>
+                  Посетим Музей Николая Рериха, где каждая картина дышит
+                  мистикой и вдохновением. После — мастер-класс по живописи: под
+                  руководством художника вы создадите собственный пейзаж Белухи.
+                  Вечером — тёплая беседа у костра. В этот момент особенно ясно
+                  понимаешь, зачем приехал сюда.
+                </p>
+              </div>
+            </li>
+
+            <!-- ===== День 5 ===== -->
+            <li class="route__item">
+              <button class="route__header">
+                <span class="route__icon">
+                  <!-- gift -->
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-gift"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path
+                      d="M3 8m0 1a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-16a1 1 0 0 1 -1 -1z"
+                    />
+                    <path d="M12 8l0 13" />
+                    <path d="M19 12v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-7" />
+                    <path
+                      d="M7.5 8a2.5 2.5 0 0 1 0 -5a4.8 8 0 0 1 4.5 5a4.8 8 0 0 1 4.5 -5a2.5 2.5 0 0 1 0 5"
+                    />
+                  </svg>
+                </span>
+                <span class="route__day">День 5. Алтай Благословенный</span>
+                <span class="route__arrow">▼</span>
+              </button>
+              <div class="route__body">
+                <p>
+                  Сегодня нас ждёт Семинский перевал — ворота к новым вершинам и
+                  новый взгляд на уже пройденный путь. Мы сделаем остановку на
+                  ярмарке ремёсел, где можно выбрать сувениры, созданные руками
+                  алтайских мастеров. Вечером — праздничный ужин, благодарность
+                  и обмен впечатлениями, ведь каждый здесь уже немного
+                  изменился.
+                </p>
+              </div>
+            </li>
+
+            <!-- ===== День 6 ===== -->
+            <li class="route__item">
+              <button class="route__header">
+                <span class="route__icon">
+                  <!-- sunrise -->
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-sunset-2"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M3 13h1" />
+                    <path d="M20 13h1" />
+                    <path d="M5.6 6.6l.7 .7" />
+                    <path d="M18.4 6.6l-.7 .7" />
+                    <path d="M8 13a4 4 0 1 1 8 0" />
+                    <path d="M3 17h18" />
+                    <path d="M7 20h5" />
+                    <path d="M16 20h1" />
+                    <path d="M12 5v-1" />
+                  </svg>
+                </span>
+                <span class="route__day">День 6. Алтарь чистого сердца</span>
+                <span class="route__arrow">▼</span>
+              </button>
+              <div class="route__body">
+                <p>
+                  Прощание с Алтаем. Мы делимся тёплыми словами и объятиями,
+                  ощущая, что это не конец, а начало нового. Вы уезжаете
+                  наполненными, спокойными и вдохновлёнными, с чувством, что
+                  побывали не просто в горах — а в месте, где сердце звучит в
+                  унисон с миром.
+                </p>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
     </section>

@@ -1150,3 +1150,231 @@
     animation: none;
   }
 }
+
+/* ===== Reviews (премиально, в стилистике сайта) ===== */
+.reviews {
+  background: linear-gradient(180deg, var(--clr-bg) 0%, var(--clr-bg-2) 100%);
+}
+
+.reviews__head {
+  margin-bottom: 16px;
+}
+.reviews__sub {
+  color: var(--clr-muted);
+  margin-top: 6px;
+}
+
+/* Карточка отзыва */
+.review-card {
+  background: color-mix(in oklab, var(--clr-surface) 92%, transparent);
+  border: 1px solid color-mix(in oklab, var(--clr-accent) 18%, transparent);
+  border-radius: var(--radius);
+  padding: 16px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(6px);
+}
+
+.review-card__top {
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.review-card__avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  box-shadow: 0 0 0 1px color-mix(in oklab, var(--clr-text) 12%, transparent);
+}
+
+.review-card__name {
+  font-weight: 600;
+}
+.review-card__meta {
+  color: var(--clr-muted);
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.review-card__rate {
+  display: inline-flex;
+  gap: 2px;
+}
+.star {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: color-mix(in oklab, var(--clr-text) 30%, transparent);
+}
+.star.filled {
+  fill: var(--clr-accent);
+  stroke: var(--clr-accent);
+}
+
+.review-card__text {
+  margin: 10px 0 8px;
+  color: var(--clr-text);
+}
+.review-card__foot {
+  font-size: 12px;
+  color: var(--clr-muted);
+}
+
+/* Сводные метрики */
+.reviews-proof {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 18px 0 8px;
+}
+.proof__item {
+  padding: 12px;
+  border-radius: var(--radius);
+  background: color-mix(in oklab, var(--clr-surface) 96%, transparent);
+  border: 1px solid color-mix(in oklab, var(--clr-text) 12%, transparent);
+  text-align: center;
+}
+.proof__num {
+  font-size: clamp(18px, 3vw, 28px);
+  font-weight: 700;
+  color: var(--clr-accent);
+}
+.proof__unit {
+  margin-left: 2px;
+  color: var(--clr-muted);
+}
+.proof__item small {
+  display: block;
+  color: var(--clr-muted);
+  margin-top: 4px;
+}
+
+/* Splide размеры */
+.reviews-splide .splide__slide {
+  padding: 4px;
+}
+.reviews-splide .splide__track {
+  overflow: visible;
+}
+
+/* Адаптив */
+@media (min-width: 992px) {
+  .review-card__top {
+    grid-template-columns: 56px 1fr auto;
+  }
+  .review-card__avatar {
+    width: 56px;
+    height: 56px;
+  }
+  .star,
+  .star.filled {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .proof__num {
+    font-size: 20px;
+  }
+  .reviews-proof {
+    gap: 10px;
+  }
+}
+
+/* ===== FIX для горизонтального скролла в Splide ===== */
+
+/* трек должен резать переполнение */
+.reviews-splide .splide__track {
+  overflow: hidden !important; /* было: visible */
+}
+
+/* список не раздувает ширину */
+.reviews-splide .splide__list {
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+/* слайды не «выпирают» */
+.reviews-splide .splide__slide {
+  min-width: 0 !important;
+  box-sizing: border-box;
+  padding: 4px; /* как у тебя было */
+}
+
+/* подстраховка на сам контейнер слайдера */
+.reviews-splide {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* медиаконтент внутри карточек не раздвигает контейнер */
+.review-card img,
+.review-card svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Светлая тема тонкие подстройки */
+:root[data-theme="light"] .review-card {
+  background: #fff;
+  border-color: color-mix(in oklab, var(--clr-accent) 22%, #fff);
+}
+
+/* ========== Финансовые гарантии ========== */
+.financial {
+  background: var(--general-bg);
+  color: var(--general-text);
+  text-align: center;
+  padding: clamp(40px, 6vw, 80px) 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.financial__title {
+  font-family: var(--font-family, "Montserrat", sans-serif);
+  font-size: clamp(22px, 2.5vw, 32px);
+  font-weight: var(--fw-bold);
+  margin-bottom: 12px;
+}
+
+.financial__subtitle {
+  color: var(--clr-text-muted);
+  font-size: var(--fs-16);
+  line-height: var(--lh-150, 150%);
+  margin-bottom: 32px;
+}
+
+.financial__icons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.financial__icons li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--fs-14, 14px);
+  color: var(--clr-text-light);
+}
+
+.financial__icons img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  filter: grayscale(100%) opacity(0.8);
+  transition: filter 0.3s;
+}
+
+.financial__icons li:hover img {
+  filter: none;
+}

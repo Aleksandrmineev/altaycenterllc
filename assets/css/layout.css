@@ -31,13 +31,13 @@
 }
 
 .site-footer {
-  padding: 28px 0;
+  padding: 28px 0 48px;
   background: rgba(0, 0, 0, 0.15);
 }
 .footer__row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 16px;
 }
 .footer__links {

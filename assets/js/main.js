@@ -311,3 +311,22 @@ const housingLB = GLightbox({
   zoomable: true,
   moreText: "Подробнее",
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const reviewsSplide = document.querySelector(".reviews-splide");
+  if (reviewsSplide && window.Splide) {
+    new Splide(reviewsSplide, {
+      type: "loop",
+      perPage: 3,
+      gap: "16px",
+      arrows: false /* 🚫 стрелки выключены */,
+      pagination: true,
+      speed: 700,
+      easing: "ease",
+      breakpoints: {
+        1024: { perPage: 2, gap: "14px" },
+        640: { perPage: 1, gap: "12px" },
+      },
+    }).mount();
+  }
+});

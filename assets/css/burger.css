@@ -1,0 +1,208 @@
+/* базовые переменные от theme.css используются */
+:root {
+  --burger-bg: color-mix(in oklab, var(--clr-surface) 90%, transparent);
+  --burger-border: color-mix(in oklab, var(--clr-text) 12%, transparent);
+  --burger-overlay: rgba(0, 0, 0, 0.75);
+}
+:root[data-theme="light"] {
+  --burger-bg: color-mix(in oklab, var(--clr-surface) 50%, transparent);
+  --burger-border: rgba(0, 0, 0, 0.08);
+  --burger-overlay: rgba(0, 0, 0, 0.75);
+}
+
+/* кнопка в шапке */
+.burger-btn {
+  display: inline-grid;
+  gap: 4px;
+  align-content: center;
+  width: 42px;
+  height: 42px;
+  padding: 8px;
+  border-radius: var(--radius-sm, 10px);
+  border: 1px solid var(--burger-border);
+  background: transparent;
+  color: var(--clr-text);
+}
+.burger-btn span {
+  display: block;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+}
+.burger-btn span:nth-child(1) {
+  width: 22px;
+}
+.burger-btn span:nth-child(2) {
+  width: 16px;
+}
+.burger-btn span:nth-child(3) {
+  width: 20px;
+}
+
+/* оверлей + панель */
+.burger {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+}
+.burger__overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--burger-overlay);
+}
+@supports (backdrop-filter: blur(4px)) {
+  .burger__overlay {
+    backdrop-filter: blur(4px) brightness(0.9); /* мягкий блюр поверх контента */
+  }
+}
+.burger__panel {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: min(420px, 86vw);
+  background: var(--burger-bg);
+  color: var(--clr-text);
+  border-right: 1px solid var(--burger-border);
+  box-shadow: var(--shadow);
+  padding: clamp(14px, 2.2vw, 20px);
+  display: grid;
+  grid-template-rows: auto 1fr;
+  outline: none;
+  max-height: 100dvh; /* вся высота окна */
+  overflow: auto; /* включаем прокрутку внутри */
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain; /* без «резинки» наружу */
+}
+
+/* шапка панели */
+.burger__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--burger-border);
+}
+.burger__head h3 {
+  font-family: var(--font-head);
+  margin: 0;
+  font-size: clamp(18px, 2vw, 22px);
+}
+.burger__close {
+  background: transparent;
+  border: 1px solid var(--burger-border);
+  border-radius: var(--radius-sm, 10px);
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  line-height: 1;
+  color: var(--clr-text);
+}
+
+/* контент */
+.burger__body {
+  display: grid;
+  gap: 18px;
+  padding-top: 14px;
+}
+.burger__cta {
+  justify-self: stretch;
+}
+.burger__nav h4.burger__group {
+  margin: 14px 0 8px;
+  color: var(--clr-muted);
+  font-size: 0.95em;
+  font-weight: 600;
+}
+.burger__nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+.burger__nav a {
+  display: block;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm, 10px);
+  border: 1px solid transparent;
+}
+.burger__nav a:hover {
+  border-color: var(--burger-border);
+  color: var(--clr-accent);
+}
+
+/* утилиты */
+.burger__utils {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 6px;
+}
+.burger__messengers {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+}
+
+.messenger {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--clr-surface);
+  border: 1px solid var(--burger-border);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.messenger:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* SVG выравниваются идеально по центру */
+.messenger svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+  margin: auto;
+}
+
+.messenger.wa {
+  background: radial-gradient(circle at 50% 50%, #25d366 60%, transparent 61%)
+    center/100% 100% no-repeat;
+}
+
+.messenger.tg {
+  background: radial-gradient(circle at 50% 50%, #24a1de 60%, transparent 61%)
+    center/100% 100% no-repeat;
+}
+
+/* небольшая анимация появления */
+:root[data-menu-open="true"] .burger__panel {
+  animation: slideIn 0.18s ease-out both;
+}
+:root[data-menu-open="true"] .burger__overlay {
+  animation: fadeIn 0.18s ease-out both;
+}
+@keyframes slideIn {
+  from {
+    transform: translateX(-12px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

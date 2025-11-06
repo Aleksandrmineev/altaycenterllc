@@ -1,0 +1,203 @@
+/* =======================================================
+   financial.css — для страницы финансов/документов
+   Работает с темами из theme.css (dark/light).
+   Соответствует разметке:
+   <main class="container grid">
+     <section class="blocks">...</section>
+     <aside class="blocks">...</aside>
+   </main>
+   ======================================================= */
+
+/* Производные переменные компонента */
+:root {
+  --fin-card-bg: color-mix(in oklab, var(--clr-surface) 90%, transparent);
+  --fin-card-border: color-mix(in oklab, var(--clr-text) 12%, transparent);
+  --fin-card-border-strong: color-mix(
+    in oklab,
+    var(--clr-text) 18%,
+    transparent
+  );
+  --fin-muted: var(--clr-muted);
+  --fin-link: var(--clr-accent);
+}
+:root[data-theme="light"] {
+  --fin-card-bg: #fff;
+  --fin-card-border: rgba(0, 0, 0, 0.08);
+  --fin-card-border-strong: rgba(0, 0, 0, 0.12);
+}
+
+/* Шапка страницы */
+.page--financial .breadcrumbs {
+  color: var(--fin-muted);
+  font-size: clamp(13px, 0.95vw, 14px);
+  margin-bottom: 10px;
+}
+.page--financial .page__title {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: clamp(24px, 3vw, 36px);
+  margin: 6px 0 6px;
+}
+.page--financial .page__lead {
+  color: var(--fin-muted);
+  font-size: var(--fs-lead);
+  line-height: 1.5;
+  margin: 0 0 28px;
+}
+
+/* ===== ЛЕЙАУТ: две колонки ===== */
+.page--financial .grid {
+  display: grid;
+  grid-template-columns: 1fr; /* мобилы: одна колонка */
+  gap: clamp(18px, 2vw, 24px);
+}
+@media (min-width: 960px) {
+  .page--financial .grid {
+    grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr); /* левая шире */
+    align-items: start;
+    gap: clamp(24px, 3vw, 32px);
+  }
+}
+
+/* Контейнеры секций внутри колонок */
+.page--financial .blocks {
+  display: grid;
+  gap: clamp(16px, 2vw, 24px);
+}
+
+/* Липкий aside на десктопе */
+@media (min-width: 960px) {
+  .page--financial aside.blocks {
+    position: sticky;
+    top: clamp(12px, 4vw, 32px);
+    align-self: start;
+    height: fit-content;
+  }
+}
+
+/* ===== Карточки ===== */
+.page--financial .card {
+  background: var(--fin-card-bg);
+  border: 1px solid var(--fin-card-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: clamp(16px, 2.5vw, 24px);
+}
+.page--financial .card > h3 {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: clamp(18px, 2vw, 22px);
+  margin: 0 0 12px;
+}
+.page--financial .note {
+  color: var(--fin-muted);
+  font-size: clamp(13px, 0.9vw, 14px);
+  margin-top: 10px;
+}
+
+/* ===== DL "ключ-значение" ===== */
+.page--financial .kv {
+  display: grid;
+  grid-template-columns: minmax(140px, 240px) 1fr;
+  gap: 10px 14px;
+  font-size: var(--fs-base);
+}
+.page--financial .kv dt {
+  color: var(--fin-muted);
+}
+.page--financial .kv dd {
+  margin: 0;
+}
+@media (max-width: 640px) {
+  .page--financial .kv {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== Списки документов/правовой инфы ===== */
+.page--financial .docs-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+.page--financial .docs-list a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--clr-text);
+  text-decoration: none;
+  padding: 10px 12px;
+  border: 1px dashed var(--fin-card-border-strong);
+  border-radius: var(--radius-sm, 10px);
+  transition: border-color 0.2s, color 0.2s, background 0.2s, transform 0.1s;
+}
+.page--financial .docs-list a:hover {
+  border-style: solid;
+  border-color: var(--fin-link);
+  color: var(--fin-link);
+}
+.page--financial .docs-list a svg {
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+}
+
+/* ===== Таблицы (если будут) ===== */
+.page--financial .table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.page--financial .table,
+.page--financial table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+.page--financial .table th,
+.page--financial .table td,
+.page--financial table th,
+.page--financial table td {
+  min-width: 0 !important;
+  width: auto;
+  max-width: 100%;
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--fin-card-border);
+}
+
+/* ===== Кнопка "Назад" ===== */
+.page--financial .back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  color: var(--fin-link);
+  text-decoration: none;
+}
+.page--financial .back:hover {
+  text-decoration: underline;
+}
+.page--financial .back svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ===== Адаптация отступов у контейнеров на этой странице ===== */
+.page--financial header.container {
+  padding-top: clamp(10px, 2vw, 16px);
+  padding-bottom: 4px;
+}
+.page--financial .container.grid {
+  padding-bottom: clamp(16px, 3vw, 28px);
+}
+
+/* ===== Уважение к reduce motion ===== */
+@media (prefers-reduced-motion: reduce) {
+  .page--financial .docs-list a {
+    transition: none;
+  }
+}

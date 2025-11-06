@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Финансовые гарантии и документы — АлтайЦентр</title>
+
+    <!-- ===============================
+     FAVICONS
+     =============================== -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="assets/favicon/site.webmanifest" />
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <link
+      href="https://unpkg.com/maplibre-gl@3.6.1/dist/maplibre-gl.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css"
+    />
+    <link
+      rel="preload"
+      href="assets/fonts/inter-regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="assets/fonts/montserrat-bold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="stylesheet" href="assets/css/global.css" />
+    <link rel="stylesheet" href="assets/css/layout.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+    <link rel="stylesheet" href="assets/css/financial.css" />
+  </head>
+
+  <body class="page page--financial">
+    <header class="site-header">
+      <div class="container header__row">
+        <!-- в <header class="site-header"> внутри .header__row -->
+        <button
+          class="burger-btn"
+          id="burgerOpen"
+          aria-label="Открыть меню"
+          aria-controls="siteBurger"
+          aria-expanded="false"
+        >
+          <span></span><span></span><span></span>
+        </button>
+
+        <a class="brand" href="/" aria-label="АлтайЦентр — главная">
+          <img
+            src="assets/img/logo-altaycenter-white.png"
+            alt="АлтайЦентр"
+            width="140"
+            height="auto"
+            class="brand__logo"
+          />
+          <span class="brand__text"></span>
+        </a>
+
+        <nav class="header__actions">
+          <a class="link-muted" href="contacts.html">Контакты</a>
+          <button
+            id="themeToggle"
+            class="btn btn--ghost"
+            aria-label="Переключить тему"
+          >
+            🌙
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <header class="container">
+      <nav class="breadcrumbs">
+        <a href="index.html">Главная</a> · Финансовые гарантии и документы
+      </nav>
+      <h1 class="page__title">Финансовые гарантии и документы</h1>
+      <p class="page__lead">
+        Организатор: ООО «АлтайЦентр» · Туроператор по Республике Алтай. На этой
+        странице — официальные реквизиты, подтверждающие документы и правовая
+        информация сайта.
+      </p>
+    </header>
+
+    <main class="container grid">
+      <!-- Левая колонка -->
+      <section class="blocks">
+        <!-- Реквизиты -->
+        <section class="card" id="requisites" aria-labelledby="h-requisites">
+          <h3 id="h-requisites">Реквизиты организации</h3>
+          <dl class="kv">
+            <dt>Полное наименование</dt>
+            <dd>Общество с ограниченной ответственностью «АлтайЦентр»</dd>
+
+            <dt>Сокращённое наименование</dt>
+            <dd>ООО «АлтайЦентр»</dd>
+
+            <dt>Юридический адрес</dt>
+            <dd>
+              649240, РЕСПУБЛИКА АЛТАЙ, М.Р-Н ЧЕМАЛЬСКИЙ, С.П. ЧЕМАЛЬСКОЕ, С
+              ЧЕМАЛ, УЛ УОЖАНСКАЯ, Д. 14
+            </dd>
+
+            <dt>ОГРН</dt>
+            <dd>1250400001940</dd>
+
+            <dt>ИНН / КПП</dt>
+            <dd>0400028917 / 040001001</dd>
+
+            <dt>E-mail</dt>
+            <dd>
+              <a href="mailto:altaycenterllc@mail.ru">altaycenterllc@mail.ru</a>
+            </dd>
+
+            <dt>Банковские реквизиты</dt>
+            <dd>
+              [название банка], БИК [XXXXXX], р/с [XXXXXXXXXXXXXXX], к/с
+              [XXXXXXXXXXXXXXX]
+            </dd>
+          </dl>
+          <p class="note">
+            Примечание: при безналичной оплате направляйте запрос на счёт и
+            договор на указанный e-mail.
+          </p>
+        </section>
+
+        <!-- Финансовое обеспечение -->
+        <section class="card" id="guarantee" aria-labelledby="h-guarantee">
+          <h3 id="h-guarantee">
+            Финансовые гарантии (страхование ответственности)
+          </h3>
+          <dl class="kv">
+            <dt>Страховая компания</dt>
+            <dd>Росгосстрах</dd>
+
+            <dt>Номер полиса</dt>
+            <dd>[номер полиса]</dd>
+
+            <dt>Срок действия</dt>
+            <dd>[дата начала] — [дата окончания]</dd>
+
+            <dt>Сумма финансового обеспечения</dt>
+            <dd>[сумма, ₽]</dd>
+
+            <dt>Кому обращаться</dt>
+            <dd>
+              По вопросам страхового случая — в страховую компанию и на e-mail
+              организатора
+            </dd>
+          </dl>
+          <p class="note">
+            Данные по полису заполняются по действующему договору страхования
+            ответственности туроператора.
+          </p>
+        </section>
+
+        <!-- Возраст и условия участия -->
+        <section class="card" id="age" aria-labelledby="h-age">
+          <h3 id="h-age">Возраст и форматы туров</h3>
+          <p>
+            Минимальный возраст участника: <strong>от 10 лет</strong>. Доступны
+            групповые и индивидуальные туры.
+          </p>
+        </section>
+      </section>
+
+      <!-- Правая колонка -->
+      <aside class="blocks" aria-label="Документы и правовая информация">
+        <!-- Список документов -->
+        <section class="card" id="docs" aria-labelledby="h-docs">
+          <h3 id="h-docs">Документы (PDF)</h3>
+          <ul class="docs-list">
+            <li>
+              <a
+                href="assets/docs/egrul-list.pdf"
+                target="_blank"
+                rel="noopener"
+              >
+                <!-- иконка PDF -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M14 2H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7z"
+                  />
+                  <path d="M14 2v5h5" />
+                </svg>
+                Лист записи ЕГРЮЛ
+              </a>
+            </li>
+            <li>
+              <a
+                href="assets/docs/tax-registration.pdf"
+                target="_blank"
+                rel="noopener"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M14 2H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7z"
+                  />
+                  <path d="M14 2v5h5" />
+                </svg>
+                Свидетельство о постановке на учёт (ИНН/КПП)
+              </a>
+            </li>
+            <!-- <li>
+              <a
+                href="assets/docs/insurance-policy.pdf"
+                target="_blank"
+                rel="noopener"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M4 4l8-2 8 2v6c0 6-4 10-8 12C8 20 4 16 4 10z" />
+                  <path d="M9 12l2 2 4-4" />
+                </svg>
+                Договор (полис) страхования ответственности туроператора
+              </a>
+            </li> -->
+            <!-- по желанию -->
+            <!-- <li><a href="assets/docs/charter.pdf" target="_blank" rel="noopener">Устав</a></li> -->
+          </ul>
+          <p class="note">
+            Примечание: документы обновляются по мере необходимости. Если у вас
+            есть вопросы по документам, пожалуйста, свяжитесь с нами.
+          </p>
+        </section>
+
+        <!-- Правовая информация сайта -->
+        <section class="card" id="legal" aria-labelledby="h-legal">
+          <h3 id="h-legal">Правовая информация сайта</h3>
+          <ul class="docs-list">
+            <li><a href="terms.html">Пользовательское соглашение</a></li>
+            <li><a href="privacy.html">Политика конфиденциальности</a></li>
+            <li><a href="cookies.html">Информация о файлах Cookie</a></li>
+            <li>
+              <a href="dataprotection.html"
+                >Защита персональных данных (ФЗ-152)</a
+              >
+            </li>
+          </ul>
+        </section>
+
+        <!-- Контакты для обращений -->
+        <section class="card" id="contact" aria-labelledby="h-contact">
+          <h3 id="h-contact">Контакт для юридических запросов</h3>
+          <p>
+            E-mail:
+            <a href="mailto:altaycenterllc@mail.ru">altaycenterllc@mail.ru</a>
+          </p>
+        </section>
+      </aside>
+    </main>
+
+    <div class="container">
+      <a class="back" href="index.html" aria-label="Назад на главную">
+        <!-- стрелка влево -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="18"
+          height="18"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M15 12H3" />
+          <path d="M9 18l-6-6 6-6" />
+        </svg>
+        Назад на главную
+      </a>
+    </div>
+
+    <footer class="site-footer">
+      <div class="container footer__row">
+        <nav class="iconbar" aria-label="Быстрая навигация">
+          <div class="iconbar__cell">
+            <a href="index.html#why" class="iconbar__item" aria-label="О туре">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="var(--clr-accent)"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M3 20h18l-6.9-14.6a2.3 2.3 0 0 0-4.2 0L3 20z" />
+                <path d="M7.5 11l2 2.5l2.5-2.5l2 3l2.5-2" />
+              </svg>
+            </a>
+            <small>О туре</small>
+          </div>
+
+          <div class="iconbar__cell">
+            <a
+              href="index.html#route"
+              class="iconbar__item"
+              aria-label="Программа"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="var(--clr-accent)"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M3 7l6-3l6 3l6-3v13l-6 3l-6-3l-6 3V7z" />
+                <path d="M9 12v.01M6 13v.01M17 15l-4-4M13 15l4-4" />
+              </svg>
+            </a>
+            <small>Программа</small>
+          </div>
+
+          <div class="iconbar__cell">
+            <a href="index.html#map" class="iconbar__item" aria-label="Карта">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="var(--clr-accent)"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="9" />
+                <path d="m16 8-4 8l-4-4l8-4" />
+              </svg>
+            </a>
+            <small>Карта</small>
+          </div>
+
+          <div class="iconbar__cell">
+            <a
+              href="index.html#pricingTitle"
+              class="iconbar__item"
+              aria-label="Стоимость"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="var(--clr-accent)"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path d="M3 10h18M8 15h.01M16 15h.01" />
+              </svg>
+            </a>
+            <small>Стоимость</small>
+          </div>
+
+          <div class="iconbar__cell">
+            <a
+              href="index.html#reviews"
+              class="iconbar__item"
+              aria-label="Отзывы"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="var(--clr-accent)"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                />
+              </svg>
+            </a>
+            <small>Отзывы</small>
+          </div>
+
+          <div class="iconbar__cell">
+            <a href="/contacts/" class="iconbar__item" aria-label="Контакты">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="var(--clr-accent)"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path d="M3 7l9 6l9-6" />
+              </svg>
+            </a>
+            <small>Контакты</small>
+          </div>
+
+          <div class="iconbar__cell">
+            <a
+              href="https://t.me/aamineev"
+              class="iconbar__item"
+              target="_blank"
+              rel="noopener"
+              aria-label="Разработка"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="var(--clr-accent)"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="3" y="4" width="18" height="16" rx="2" />
+                <path d="M8 10h8M8 14h5" />
+              </svg>
+            </a>
+            <small>Разработка</small>
+          </div>
+        </nav>
+      </div>
+    </footer>
+    <button id="scrollTop" class="scrolltop" aria-label="Наверх" title="Наверх">
+      <!-- стрелка линиями -->
+      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          d="M12 19V5"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+        <path
+          d="M6 11l6-6 6 6"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </button>
+    <link rel="stylesheet" href="assets/css/burger.css" />
+    <script src="assets/js/burger.js" defer></script>
+
+    <script src="assets/js/ui.js" defer></script>
+    <script src="assets/js/anim.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
+  </body>
+</html>

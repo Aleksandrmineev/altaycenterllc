@@ -291,3 +291,33 @@ function bindPopup() {
     moveTo(item);
   });
 })();
+
+// === ScrollToTop ===
+(() => {
+  const btn = document.getElementById("scrollTop");
+  if (!btn) return;
+
+  const THRESHOLD = 400; // px
+  let ticking = false;
+
+  const toggle = () => {
+    const show = window.scrollY > THRESHOLD;
+    btn.classList.toggle("is-visible", show);
+    ticking = false;
+  };
+
+  const onScroll = () => {
+    if (!ticking) {
+      window.requestAnimationFrame(toggle);
+      ticking = true;
+    }
+  };
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("load", toggle);
+
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+})();

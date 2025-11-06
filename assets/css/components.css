@@ -308,3 +308,175 @@
   -webkit-text-stroke: 0.4px color-mix(in srgb, currentColor 10%, transparent);
   paint-order: stroke fill;
 }
+
+/* === ScrollToTop (ultra-ghost) === */
+.scrolltop {
+  position: fixed;
+  left: clamp(12px, 2.4vw, 28px);
+  bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 999;
+  display: grid;
+  place-items: center;
+
+  width: clamp(44px, 5.5vw, 56px);
+  height: clamp(44px, 5.5vw, 56px);
+  border-radius: var(--radius-pill);
+
+  /* почти прозрачный фон и контур */
+  background: color-mix(in oklab, var(--clr-accent) 8%, transparent 92%);
+  border: 1px solid color-mix(in oklab, var(--clr-accent) 65%, #fff 35%);
+  color: var(--clr-accent);
+
+  box-shadow: none;
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+
+  transform: translateY(8px) scale(0.98);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.25s ease, opacity 0.25s ease, background 0.25s ease,
+    box-shadow 0.25s ease, color 0.25s ease;
+}
+
+.scrolltop svg {
+  display: block;
+}
+
+/* появляется */
+.scrolltop.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+/* hover / focus */
+.scrolltop:hover,
+.scrolltop:focus-visible {
+  background: color-mix(in oklab, var(--clr-accent) 25%, transparent 75%);
+  color: var(--clr-on-accent);
+  box-shadow: 0 0 18px
+    color-mix(in oklab, var(--clr-accent) 50%, transparent 50%);
+}
+
+/* active */
+.scrolltop:active {
+  transform: translateY(1px) scale(0.96);
+}
+
+/* светлая тема — мягче контур */
+:root[data-theme="light"] .scrolltop {
+  border-color: color-mix(in oklab, var(--clr-accent) 50%, #000 50%);
+  background: color-mix(in oklab, var(--clr-accent) 5%, transparent 95%);
+  color: var(--clr-accent);
+}
+
+/* если пользователь отключил анимации */
+@media (prefers-reduced-motion: reduce) {
+  .scrolltop {
+    transition: none;
+  }
+}
+
+.iconbar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px 20px;
+  padding: 16px 0;
+  border-top: 1px solid color-mix(in oklab, var(--clr-text) 12%, transparent);
+}
+
+.iconbar__cell {
+  display: grid;
+  justify-items: center; /* центр по горизонтали */
+  align-content: start;
+  gap: 6px;
+  min-width: 56px; /* чтобы подпись не ломала сетку */
+}
+
+.iconbar__item {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+  border: 1px solid color-mix(in oklab, var(--clr-text) 12%, transparent);
+  background: color-mix(in oklab, var(--clr-surface) 90%, transparent);
+  color: var(--clr-text);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.iconbar__item svg {
+  width: 22px; /* иконка чуть меньше круга */
+  height: 22px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Hover/Focus — премиальный подсвет */
+.iconbar__item:hover,
+.iconbar__item:focus-visible {
+  border-color: var(--clr-accent);
+  box-shadow: 0 0 12px color-mix(in oklab, var(--clr-accent) 40%, transparent);
+  transform: translateY(-2px);
+  outline: none;
+}
+.iconbar__item:hover svg,
+.iconbar__item:focus-visible svg {
+  transform: scale(1.12);
+  filter: drop-shadow(
+    0 0 6px color-mix(in oklab, var(--clr-accent) 40%, transparent)
+  );
+}
+
+/* подписи */
+.iconbar small {
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  color: var(--clr-accent);
+  margin-top: 6px;
+}
+
+@media (max-width: 480px) {
+  .iconbar {
+    gap: 8px;
+    padding: 10px 0;
+    flex-wrap: nowrap; /* всё в одну строку */
+    justify-content: space-between;
+  }
+
+  .iconbar__cell {
+    min-width: auto;
+    gap: 3px;
+  }
+
+  .iconbar__item {
+    width: 36px; /* уменьшенный круг */
+    height: 36px;
+  }
+
+  .iconbar__item svg {
+    width: 18px; /* уменьшенные иконки */
+    height: 18px;
+  }
+
+  .iconbar__cell small {
+    font-size: 10px; /* подписи компактнее */
+  }
+}
+
+/* для совсем узких (например, 320px или 280px) — ещё шаг */
+@media (max-width: 340px) {
+  .iconbar__item {
+    width: 32px;
+    height: 32px;
+  }
+  .iconbar__item svg {
+    width: 16px;
+    height: 16px;
+  }
+  .iconbar__cell small {
+    font-size: 9px;
+  }
+}

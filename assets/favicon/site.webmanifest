@@ -1,0 +1,22 @@
+{
+  "name": "Путь Рериха — авторский тур по Алтаю",
+  "short_name": "Путь Рериха",
+  "description": "Авторский тур по Алтаю: Белуха, Беловодье, Манжерок, Уймон и сила гор. Проживание, питание, трансферы и гиды включены.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b1731",
+  "theme_color": "#d7b56a",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "assets/favicon/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/favicon/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

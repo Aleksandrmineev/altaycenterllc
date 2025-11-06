@@ -15,11 +15,13 @@
   // ---- 1) ДАННЫЕ МАРШРУТА (менять тут) ----
   const routePoints = [
     { name: "Бийск", coords: [85.17, 52.539] },
-    { name: "Чуйский тракт", coords: [86.5, 51.9] },
-    { name: "Уймон", coords: [85.866, 50.843] },
+    { name: "Манжерок", coords: [85.807, 51.833] },
+    { name: "Усть-Кан", coords: [84.76, 50.93] },
+    { name: "Усть-Кокса", coords: [85.61, 50.27] },
+    { name: "Теректа", coords: [85.88, 50.3] }, // посёлок Теректа, р-н Усть-Коксы
     { name: "Башталинское плато", coords: [86.4, 49.98] },
-    { name: "Белуха", coords: [86.5853, 49.8072] },
   ];
+
   const GOLD = "#d7b56a";
 
   // ---- 2) ЛЕНИВАЯ ИНИЦИАЛИЗАЦИЯ ----
@@ -301,3 +303,11 @@
     }
   }
 })();
+
+const housingLB = GLightbox({
+  selector: ".housing-lightbox",
+  touchNavigation: true,
+  loop: true,
+  zoomable: true,
+  moreText: "Подробнее",
+});

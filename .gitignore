@@ -1,0 +1,92 @@
+# ===========================================
+#  COMMON FRONT-END / WORDPRESS PROJECTS
+# ===========================================
+
+# --- ОС и IDE ---
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# VSCode / JetBrains
+.vscode/
+.idea/
+*.code-workspace
+
+# --- Node / npm ---
+node_modules/
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# --- Build / Dist / Cache ---
+dist/
+build/
+.cache/
+.tmp/
+*.map
+*.lock
+coverage/
+*.zip
+*.tar
+*.gz
+
+# --- Environment / Config ---
+.env
+.env.local
+.env.*.local
+*.env.*
+config.php
+wp-config.php
+
+# --- WordPress uploads / backups ---
+wp-content/uploads/
+wp-content/cache/
+wp-content/upgrade/
+wp-content/ai1wm-backups/
+wp-content/backups-*/
+
+# --- Large media / sources ---
+*.psd
+*.ai
+*.eps
+*.tiff
+*.tif
+*.raw
+*.mov
+*.avi
+*.mkv
+*.wav
+*.flac
+*.zip
+*.rar
+*.7z
+
+# --- Git LFS pointers (если нужно позже) ---
+# *.mp4 filter=lfs diff=lfs merge=lfs -text
+
+# --- System files & scripts ---
+__MACOSX/
+*.exe
+*.bat
+*.sh
+*.cmd
+
+# --- Project-specific folders ---
+assets/fonts/
+assets/video/raw/
+assets/backup/
+uploads/
+export/
+temp/
+
+# --- Ignore temporary local testing ---
+*.local.html
+*.local.json
+*.local.sql
+*.sql

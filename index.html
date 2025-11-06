@@ -8,9 +8,37 @@
       name="description"
       content="6 дней / 5 ночей · Комфорт+ · Белуха, Уймон, Башталинское плато. Пройдите по тропам, где Николай Рерих искал Беловодье."
     />
+    <!-- ===============================
+     FAVICONS
+     =============================== -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="assets/favicon/site.webmanifest" />
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico" />
+    <meta name="theme-color" content="#ffffff" />
+
     <link
       href="https://unpkg.com/maplibre-gl@3.6.1/dist/maplibre-gl.css"
       rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css"
     />
     <link
       rel="preload"
@@ -414,7 +442,7 @@
                 <p>
                   Мы выезжаем по Чуйскому тракту — дороге, признанной одной из
                   самых красивых в мире. Вас ждут панорамы рек, перевалы и
-                  древние легенды. Посетим традиционный айил, попробуем местные
+                  древние легенды. Посетим традиционный аил, попробуем местные
                   продукты, мёд и травяные чаи. К вечеру — уютный ужин и отдых с
                   видом на горы, которые становятся всё ближе.
                 </p>
@@ -453,10 +481,8 @@
                 <p>
                   Пожалуй, самый символичный день — путь к Башталинскому плато и
                   у подножия Белухи. Это место силы, где воздух буквально
-                  вибрирует чистотой. Здесь проходит наша программа
-                  «Наполнение»: практики дыхания, тишины и внутреннего
-                  равновесия. Вы почувствуете, что Алтай говорит с вами напрямую
-                  — через ветер, свет и покой.
+                  вибрирует чистотой. Вы почувствуете, что Алтай говорит с вами
+                  напрямую — через ветер, свет и покой.
                 </p>
               </div>
             </li>
@@ -609,13 +635,19 @@
 
         <aside class="map-panel">
           <h2 class="map-title">Карта маршрута</h2>
-          <p class="map-sub">≈600 км • высота до 2600 м • набор ≈ 1000 м</p>
+          <p class="map-sub">
+            Стартовая высота (Бийск): ~190 м <br />
+            Максимальная высота (Башталинское плато): ~1700 м <br />
+            Набор высоты (суммарный): ≈ 1510 м
+          </p>
 
           <div class="toolbar">
-            <button class="btn btn--accent" id="playRoute">
+            <button class="btn btn--primary" id="playRoute">
               Показать маршрут
             </button>
-            <button class="btn" id="resetView">Сбросить</button>
+            <button class="btn" id="resetView" style="display: none">
+              Сбросить
+            </button>
           </div>
 
           <div class="poi-list" id="poiList"></div>
@@ -623,6 +655,312 @@
             Протяжённость маршрута: <b><span id="distKm">0</span> км</b>
           </div>
         </aside>
+      </div>
+    </section>
+
+    <!-- ===============================
+     ПРОЖИВАНИЕ И ПИТАНИЕ
+     =============================== -->
+    <section class="section-housing-duo" aria-labelledby="housingTitle3">
+      <div class="container">
+        <h2 id="housingTitle3">
+          Комфортные отели <br />
+          и алтайское гостеприимство
+        </h2>
+
+        <div class="duo">
+          <!-- === Проживание === -->
+          <article class="card">
+            <header class="card-head">
+              <div class="card-ico" aria-hidden="true">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="icon icon-tabler icons-tabler-outline icon-tabler-circle-dotted-letter-h"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M10 16v-8m4 0v8" />
+                  <path d="M10 12h4" />
+                  <path d="M7.5 4.21v.01" />
+                  <path d="M4.21 7.5v.01" />
+                  <path d="M3 12v.01" />
+                  <path d="M4.21 16.5v.01" />
+                  <path d="M7.5 19.79v.01" />
+                  <path d="M12 21v.01" />
+                  <path d="M16.5 19.79v.01" />
+                  <path d="M19.79 16.5v.01" />
+                  <path d="M21 12v.01" />
+                  <path d="M19.79 7.5v.01" />
+                  <path d="M16.5 4.21v.01" />
+                  <path d="M12 3v.01" />
+                </svg>
+              </div>
+              <h3>Проживание</h3>
+            </header>
+
+            <p class="card-text">
+              Манжерок 5⭐ • Klever Resort & Spa • Эко-отель «Кедровый остров» •
+              Усадьба Теректа • Парк-отель «Роща»
+            </p>
+
+            <div class="card-gallery">
+              <a
+                class="housing-lightbox"
+                data-gallery="lodging"
+                href="assets/img/housing/01.jpg"
+                data-title="Манжерок 5⭐"
+                data-description="Комфорт и панорама гор."
+              >
+                <img
+                  src="assets/img/housing/01.jpg"
+                  alt="Манжерок 5⭐"
+                  loading="lazy"
+                />
+              </a>
+
+              <a
+                class="housing-lightbox"
+                data-gallery="lodging"
+                href="assets/img/housing/02.jpg"
+                data-title="Klever Resort & Spa"
+                data-description="Зона SPA и бассейн."
+              >
+                <img
+                  src="assets/img/housing/02.jpg"
+                  alt="Klever Resort & Spa"
+                  loading="lazy"
+                />
+              </a>
+            </div>
+          </article>
+
+          <!-- === Питание === -->
+          <article class="card">
+            <header class="card-head">
+              <div class="card-ico" aria-hidden="true">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="icon icon-tabler icons-tabler-outline icon-tabler-tools-kitchen-3"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M7 4v17m-3 -17v3a3 3 0 1 0 6 0v-3" />
+                  <path d="M17 8m-3 0a3 4 0 1 0 6 0a3 4 0 1 0 -6 0" />
+                  <path d="M17 12v9" />
+                </svg>
+              </div>
+              <h3>Питание</h3>
+            </header>
+
+            <p class="card-text">
+              Завтраки, ланчи в пути, ужины в ресторанчиках. Вегетарианский
+              вариант по запросу.
+            </p>
+
+            <div class="card-tags">
+              <span>Завтрак включён</span>
+              <span>Ланч-боксы</span>
+              <span>Вегетарианское меню</span>
+            </div>
+
+            <div class="card-gallery">
+              <a
+                class="housing-lightbox"
+                data-gallery="food"
+                href="assets/img/housing/05.jpg"
+                data-title="Ужин в ресторанчике"
+                data-description="Местная кухня, тёплая атмосфера."
+              >
+                <img
+                  src="assets/img/housing/05.jpg"
+                  alt="Ужин в ресторанчике"
+                  loading="lazy"
+                />
+              </a>
+
+              <a
+                class="housing-lightbox"
+                data-gallery="food"
+                href="assets/img/housing/06.jpg"
+                data-title="Вегетарианское меню"
+                data-description="По запросу — сбалансированное вегетарианское питание."
+              >
+                <img
+                  src="assets/img/housing/06.jpg"
+                  alt="Вегетарианское меню"
+                  loading="lazy"
+                />
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <!-- Дополнительные фото (если хочешь 7 в сумме) -->
+        <div class="extra-gallery" hidden>
+          <a
+            class="housing-lightbox"
+            data-gallery="lodging"
+            href="assets/img/housing/07.jpg"
+          ></a>
+          <a
+            class="housing-lightbox"
+            data-gallery="lodging"
+            href="assets/img/housing/07.jpg"
+          ></a>
+          <a
+            class="housing-lightbox"
+            data-gallery="lodging"
+            href="assets/img/housing/07.jpg"
+          ></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===============================
+     СТОИМОСТЬ И ЧТО ВКЛЮЧЕНО
+     =============================== -->
+    <section class="section-pricing" aria-labelledby="pricingTitle">
+      <div class="container">
+        <header class="pricing-head">
+          <h2 id="pricingTitle">Стоимость участия</h2>
+          <p class="pricing-sub">
+            от <span class="pricing-num">260&nbsp;000&nbsp;₽</span> за человека
+          </p>
+
+          <p class="pricing-lead">
+            Этот маршрут — авторская программа, созданная для тех, кто хочет
+            увидеть Алтай во всей его глубине и тишине. Мы позаботились о том,
+            чтобы всё важное уже было включено: проживание, питание,
+            сопровождение гида и переезды. Вам остаётся только собраться — и
+            позволить себе быть в дороге.
+          </p>
+        </header>
+
+        <div
+          class="pricing-table"
+          role="table"
+          aria-label="Что включено и что не входит"
+        >
+          <!-- Входит -->
+          <div
+            class="pricing-col included"
+            role="rowgroup"
+            aria-labelledby="inclTitle"
+          >
+            <h3 id="inclTitle" class="pricing-col-title">Входит в стоимость</h3>
+            <ul class="pricing-list" role="row">
+              <li role="cell">Проживание в отелях 4★ и 5★ по маршруту</li>
+              <li role="cell">
+                Питание — завтраки, ланчи в пути, ужины в уютных ресторанах
+              </li>
+              <li role="cell">
+                Сопровождение профессионального гида на всём маршруте
+              </li>
+              <li role="cell">
+                Трансфер из Бийска и обратно, все переезды внутри программы
+              </li>
+              <li role="cell">
+                Входные билеты в музеи, мастер-классы, аренда снегоходов
+              </li>
+              <li role="cell">
+                Баня и вечер у костра в последний день маршрута
+              </li>
+            </ul>
+          </div>
+
+          <!-- Не входит -->
+          <div
+            class="pricing-col excluded"
+            role="rowgroup"
+            aria-labelledby="exclTitle"
+          >
+            <h3 id="exclTitle" class="pricing-col-title">
+              Не входит в стоимость
+            </h3>
+            <ul class="pricing-list" role="row">
+              <li role="cell">Авиаперелёт до Бийска и обратно</li>
+              <li role="cell">Медицинская страховка</li>
+              <li role="cell">
+                Ужины в 1-й и 5-й дни (свободное время в городе)
+              </li>
+              <li role="cell">Дополнительные экскурсии и личные расходы</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pricing-extra">
+          <p>
+            Мы не включаем авиаперелёт и страховку, чтобы у каждого участника
+            оставалась свобода выбора и возможность подобрать удобные условия.
+            Остальное мы берём на себя — от встречи в аэропорту до последней
+            чашки горячего чая в гостевом доме у подножья гор.
+          </p>
+          <p>
+            Это путешествие без суеты и скрытых доплат, где всё продумано
+            заранее и каждый день наполнен впечатлениями.
+          </p>
+        </div>
+
+        <footer class="pricing-cta">
+          <button class="btn btn--primary" data-open-popup="booking">
+            Забронировать тур
+          </button>
+          <p class="pricing-note">
+            Предоплата 30 %. Количество мест ограничено.
+          </p>
+        </footer>
+      </div>
+    </section>
+
+    <!-- ===============================
+     ФИЛОСОФИЯ ТУРА (видеофон)
+     =============================== -->
+    <section class="section-philosophy" aria-labelledby="philosophyTitle">
+      <video
+        class="philosophy-bg"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        poster="assets/video/philosophy-poster.webp"
+      >
+        <source src="assets/video/philosophy-bg.mp4" type="video/mp4" />
+        <!-- Fallback для очень старых браузеров -->
+      </video>
+
+      <!-- Мягкое затемнение/градиент поверх видео -->
+      <div class="philosophy-overlay" aria-hidden="true"></div>
+
+      <div class="container philosophy-content">
+        <h2 id="philosophyTitle">Белуха и Беловодье — путь к себе</h2>
+
+        <blockquote class="philosophy-quote">
+          «Главное не в том, чтобы дойти до цели, а в том, чтобы услышать своё
+          сердце».
+        </blockquote>
+
+        <p class="philosophy-text">
+          Белуха — не просто вершина Алтая. Это место силы, где тишина звучит
+          громче слов, а воздух напоминает, что всё великое — простое. Путь к
+          Беловодью — не в поиске географических границ, а в открытии
+          внутреннего простора в самом себе. Здесь мы учимся останавливаться,
+          смотреть внутрь и слышать, как отзывается душа на дыхание гор.
+        </p>
       </div>
     </section>
 
@@ -684,6 +1022,10 @@
       </div>
     </footer>
     <script src="https://unpkg.com/maplibre-gl@3.6.1/dist/maplibre-gl.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"
+      defer
+    ></script>
     <script src="assets/js/ui.js" defer></script>
     <script src="assets/js/anim.js" defer></script>
     <script src="assets/js/main.js" defer></script>

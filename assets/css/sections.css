@@ -584,8 +584,7 @@
   gap: 10px;
   margin: 14px 0 18px;
 }
-.poi-btn,
-.btn {
+.poi-btn {
   appearance: none;
   cursor: pointer;
   font-weight: 700;
@@ -596,21 +595,9 @@
   color: var(--clr-text);
   transition: 0.2s ease;
 }
-.poi-btn:hover,
-.btn:hover {
+.poi-btn:hover {
   border-color: color-mix(in oklab, var(--clr-accent) 55%, var(--clr-text) 20%);
   box-shadow: 0 8px 24px color-mix(in oklab, var(--clr-accent) 18%, transparent);
-}
-
-.btn--accent {
-  background: var(--clr-accent);
-  color: var(--clr-on-accent);
-  border-color: color-mix(in oklab, var(--clr-accent) 80%, #000 20%);
-}
-.btn--accent:hover {
-  filter: brightness(1.03);
-  box-shadow: 0 10px 26px
-    color-mix(in oklab, var(--clr-accent) 35%, transparent);
 }
 
 .meta {
@@ -676,4 +663,488 @@
 }
 :root[data-theme="light"] .map-fog::after {
   opacity: 0.25;
+}
+
+/* ===============================
+   ПРОЖИВАНИЕ И ПИТАНИЕ (C: duo)
+   =============================== */
+
+.section-housing-duo {
+  background: linear-gradient(180deg, var(--clr-bg) 0%, var(--clr-bg-2) 100%);
+  color: var(--clr-text);
+  padding: clamp(32px, 6vw, 80px) 0;
+}
+
+.section-housing-duo h2 {
+  font-family: var(--font-head);
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  text-align: center;
+  margin: 0 0 1.6em;
+}
+
+.duo {
+  display: grid;
+  gap: var(--gap);
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+}
+
+/* --- Карточка --- */
+.card {
+  background: var(--clr-surface);
+  border: 1px solid color-mix(in oklab, var(--clr-accent) 25%, var(--clr-bg));
+  border-radius: var(--radius);
+  padding: clamp(16px, 2.4vw, 28px);
+  box-shadow: var(--shadow);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.4);
+}
+
+.card-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 0.6em;
+}
+.card-ico {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+  border-radius: 50%;
+  background: color-mix(in oklab, var(--clr-accent) 20%, transparent);
+  border: 1px solid color-mix(in oklab, var(--clr-accent) 50%, var(--clr-bg));
+}
+.card h3 {
+  margin: 0;
+  font-family: var(--font-head);
+  font-size: clamp(18px, 1.5vw, 22px);
+  font-weight: 700;
+}
+
+.card-text {
+  margin: 0 0 1em;
+  font-size: var(--fs-lead);
+  color: var(--clr-muted);
+}
+
+/* --- Теги --- */
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 1em;
+}
+.card-tags span {
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  border: 1px solid color-mix(in oklab, var(--clr-accent) 55%, var(--clr-bg));
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--clr-accent) 12%, transparent) 0%,
+    transparent 100%
+  );
+  font-weight: 600;
+  color: var(--clr-text);
+}
+
+/* --- Галерея --- */
+.card-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.card-gallery a {
+  display: block;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.card-gallery img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 2 / 1;
+  object-fit: cover;
+  border-radius: inherit;
+  box-shadow: 0 6px 20px var(--shadow-on-media-dark-3);
+  transition: transform 0.35s ease;
+}
+.card-gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* --- Светлая тема уточнения --- */
+:root[data-theme="light"] .card {
+  box-shadow: 0 24px 40px rgba(0, 0, 0, 0.08);
+  border-color: color-mix(in oklab, var(--clr-accent) 25%, #ccc);
+}
+:root[data-theme="light"] .card-gallery img {
+  box-shadow: 0 6px 20px var(--glow-on-media-light-3);
+}
+
+/* ===============================
+     GLightbox — только фото
+     =============================== */
+
+/* скрыть любые подписи/описания и пустые контейнеры */
+.glightbox-container .gslide-title,
+.glightbox-container .gdesc,
+.glightbox-container .gslide-description,
+.glightbox-container .gdesc-inner {
+  display: none;
+  height: 0;
+  padding: 0;
+  margin: 0;
+}
+
+/* фон лайтбокса под тему */
+.goverlay {
+  background: rgba(0, 0, 0, 0.85);
+}
+:root[data-theme="light"] .goverlay {
+  background: rgba(15, 20, 35, 0.65);
+}
+
+/* контент — без рамок/теней, только картинка */
+.glightbox-container .gslide-inner-content {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  border-radius: var(--radius);
+}
+
+/* иконки управления — золотой акцент */
+.glightbox-clean .gbtn svg,
+.glightbox-clean .gbtn svg path {
+  color: var(--clr-accent);
+  stroke: var(--clr-accent);
+  fill: var(--clr-accent);
+}
+
+/* ограничения по высоте, аккуратное масштабирование */
+.glightbox-container .gslide-image img {
+  max-height: 90vh;
+  object-fit: contain;
+  background: transparent;
+}
+
+/* ===============================
+   СТОИМОСТЬ (pricing)
+   =============================== */
+.section-pricing {
+  background: linear-gradient(180deg, var(--clr-bg) 0%, var(--clr-bg-2) 100%);
+  color: var(--clr-text);
+  padding: clamp(36px, 6vw, 84px) 0;
+}
+
+.pricing-head {
+  text-align: center;
+  margin-bottom: clamp(18px, 4vw, 36px);
+}
+.pricing-head h2 {
+  font-family: var(--font-head);
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  margin: 0 0 0.4em;
+}
+.pricing-sub {
+  margin: 0 0 0.5em;
+  color: var(--clr-muted);
+  font-weight: 600;
+}
+.pricing-num {
+  color: var(--clr-accent);
+  font-weight: 700;
+}
+.pricing-lead {
+  margin: 0 auto;
+  max-width: 72ch;
+  color: var(--clr-muted);
+  font-size: var(--fs-lead);
+}
+
+/* Таблица (две колонки) */
+.pricing-table {
+  display: grid;
+  gap: var(--gap);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  margin-top: clamp(18px, 3vw, 28px);
+}
+@media (max-width: 880px) {
+  .pricing-table {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pricing-col {
+  background: var(--clr-surface);
+  border: 1px solid color-mix(in oklab, var(--clr-accent) 22%, var(--clr-bg));
+  border-radius: var(--radius);
+  padding: clamp(16px, 2.4vw, 28px);
+  box-shadow: var(--shadow);
+}
+
+.pricing-col-title {
+  margin: 0 0 0.6em;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: clamp(18px, 1.5vw, 22px);
+}
+
+/* Включено / Не входит — визуальные акценты */
+.pricing-col.included {
+  outline: 1px solid color-mix(in oklab, var(--clr-accent) 45%, transparent);
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--clr-accent) 10%, transparent) 0%,
+    transparent 60%
+  );
+}
+.pricing-col.excluded {
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--clr-text) 6%, transparent) 0%,
+    transparent 70%
+  );
+}
+
+.pricing-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.6em;
+}
+.pricing-list li {
+  position: relative;
+  padding-left: 28px;
+  color: var(--clr-text);
+}
+
+/* Маркеры списков */
+.pricing-col.included .pricing-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.35em;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid color-mix(in oklab, var(--clr-accent) 70%, #fff 30%);
+  background: radial-gradient(
+    circle at 50% 50%,
+    var(--clr-accent) 55%,
+    transparent 56%
+  );
+  box-shadow: 0 0 0 2px color-mix(in oklab, var(--clr-accent) 18%, transparent)
+    inset;
+}
+
+.pricing-col.excluded .pricing-list li::before {
+  content: "✕";
+  position: absolute;
+  left: 0;
+  top: 0.1em;
+  width: 18px;
+  height: 18px;
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  line-height: 1;
+  color: color-mix(in oklab, var(--clr-text) 70%, #000 30%);
+  border-radius: 50%;
+  border: 1px solid color-mix(in oklab, var(--clr-text) 25%, var(--clr-bg));
+  background: transparent;
+}
+
+/* CTA */
+.pricing-cta {
+  text-align: center;
+  margin-top: clamp(20px, 4vw, 36px);
+}
+.pricing-cta .btn.btn--primary {
+  background: var(--clr-accent);
+  color: var(--clr-on-accent);
+  border-radius: var(--radius-pill);
+  padding: 0 clamp(18px, 3.2vw, 32px);
+  height: 52px;
+  font-weight: 700;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.35),
+    0 0 0 1px color-mix(in oklab, var(--clr-accent) 70%, #fff 30%) inset;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.pricing-cta .btn.btn--primary:hover {
+  transform: translateY(-1px);
+}
+.pricing-cta .btn.btn--primary:active {
+  transform: translateY(0);
+}
+
+.pricing-note {
+  margin: 0.6em 0 0;
+  color: var(--clr-muted);
+  font-size: clamp(13px, 0.95vw, 14px);
+}
+
+/* Светлая тема: мягче тени и бордеры */
+:root[data-theme="light"] .pricing-col {
+  box-shadow: 0 24px 40px rgba(0, 0, 0, 0.08);
+  border-color: color-mix(in oklab, var(--clr-accent) 18%, #ccc);
+}
+
+.pricing-extra {
+  max-width: 72ch;
+  margin: clamp(24px, 4vw, 48px) auto 0;
+  color: var(--clr-muted);
+  font-size: var(--fs-lead);
+  line-height: 1.6;
+  text-align: center;
+}
+.pricing-extra p + p {
+  margin-top: 1em;
+}
+
+/* ===============================
+   ФИЛОСОФИЯ (видеофон)
+   =============================== */
+.section-philosophy {
+  position: relative;
+  min-height: min(100vh, 960px);
+  display: grid;
+  place-items: center;
+  color: var(--clr-text);
+  background: linear-gradient(180deg, var(--clr-bg) 0%, var(--clr-bg-2) 100%);
+  overflow: clip;
+}
+
+.philosophy-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(1.05);
+}
+
+/* Тонкий градиент и затемнение для читабельности текста */
+.philosophy-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+      120% 60% at 50% 0%,
+      rgba(0, 0, 0, 0.45) 0%,
+      rgba(0, 0, 0, 0.35) 35%,
+      rgba(0, 0, 0, 0.25) 55%,
+      rgba(0, 0, 0, 0.15) 75%,
+      rgba(0, 0, 0, 0.1) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.1) 0%,
+      rgba(0, 0, 0, 0.35) 70%,
+      rgba(0, 0, 0, 0.55) 100%
+    );
+}
+
+/* Светлая тема — чуть холоднее и светлее подложка */
+:root[data-theme="light"] .philosophy-overlay {
+  background: radial-gradient(
+      120% 60% at 50% 0%,
+      rgba(255, 255, 255, 0.35) 0%,
+      rgba(255, 255, 255, 0.28) 35%,
+      rgba(255, 255, 255, 0.2) 60%,
+      rgba(255, 255, 255, 0.1) 80%,
+      rgba(255, 255, 255, 0.06) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.06) 0%,
+      rgba(0, 0, 0, 0.15) 70%,
+      rgba(0, 0, 0, 0.25) 100%
+    );
+}
+
+.philosophy-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: clamp(24px, 6vw, 64px) 0;
+  max-width: 900px;
+}
+
+:root[data-theme="light"] .section-philosophy h2 {
+  text-shadow: 0 2px 12px rgba(255, 255, 255, 0.45);
+}
+
+.philosophy-quote {
+  margin: 0 0 0.9em;
+  font-style: italic;
+  font-weight: 600;
+  color: var(--clr-accent);
+  text-shadow: 2 2px 10px rgba(0, 0, 0, 0.75);
+}
+
+.philosophy-text {
+  margin: 0 auto;
+  max-width: 72ch;
+  font-size: var(--fs-lead);
+  line-height: 1.65;
+  /* color: var(--clr-muted); */
+  color: #fff;
+  text-shadow: var(--shadow);
+}
+:root[data-theme="light"] .philosophy-text {
+  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.35),
+    0 0 18px rgba(255, 255, 255, 0.25);
+}
+
+/* Микро-анимация появления текста */
+@keyframes ph-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.section-philosophy .philosophy-content > * {
+  opacity: 0;
+  animation: ph-fade-up 0.8s ease forwards;
+}
+.section-philosophy .philosophy-content h2 {
+  animation-delay: 0.05s;
+}
+.section-philosophy .philosophy-content .philosophy-quote {
+  animation-delay: 0.18s;
+}
+.section-philosophy .philosophy-content .philosophy-text {
+  animation-delay: 0.32s;
+}
+
+/* Мобилки: чуть меньше высота и больше паддинги */
+@media (max-width: 640px) {
+  .section-philosophy {
+    min-height: 78vh;
+  }
+  .philosophy-text {
+    font-size: clamp(15px, 3.8vw, 18px);
+  }
+}
+
+/* Доступность: если пользователь просил меньше движения */
+@media (prefers-reduced-motion: reduce) {
+  .section-philosophy .philosophy-content > * {
+    animation: none;
+    opacity: 1;
+  }
+  .philosophy-bg {
+    animation: none;
+  }
 }

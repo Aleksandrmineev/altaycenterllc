@@ -1013,7 +1013,7 @@
    =============================== */
 .section-philosophy {
   position: relative;
-  min-height: min(100vh, 960px);
+  /* min-height: min(100vh, 960px); */
   display: grid;
   place-items: center;
   color: var(--clr-text);
@@ -1077,8 +1077,10 @@
   max-width: 900px;
 }
 
-:root[data-theme="light"] .section-philosophy h2 {
-  text-shadow: 0 2px 12px rgba(255, 255, 255, 0.45);
+:root[data-theme="light"] .section-philosophy h2,
+.philosophy-text {
+  text-shadow: 0 2px 6px var(--glow-on-media-light-1),
+    0 0 16px var(--glow-on-media-light-2), 0 0 32px var(--glow-on-media-light-3);
 }
 
 .philosophy-quote {

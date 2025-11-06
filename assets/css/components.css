@@ -13,6 +13,7 @@
   transition: 0.25s ease;
   text-decoration: none;
   margin: 10px auto;
+  font-size: clamp(16px, 1.2vw, 18px);
 }
 .btn--primary {
   background: var(--clr-accent);

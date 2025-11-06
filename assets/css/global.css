@@ -160,24 +160,6 @@ h2 {
   color: var(--clr-muted);
 }
 
-/* Усиленная читаемость текста */
-h1,
-h2,
-h3,
-p,
-.lead {
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 2px 6px rgba(0, 0, 0, 0.25);
-}
-
-[data-theme="light"] h1,
-[data-theme="light"] h2,
-[data-theme="light"] h3,
-[data-theme="light"] p,
-[data-theme="light"] .lead {
-  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.6),
-    0 2px 8px rgba(255, 255, 255, 0.45);
-}
-
 /* ======================================
    BASE ELEMENTS
    ====================================== */
@@ -196,4 +178,57 @@ video {
 .container {
   width: min(92%, var(--container-max));
   margin-inline: auto;
+}
+
+/* === 1) БОЛЬШЕ РАЗМЕРЫ ДЛЯ САБТАЙТОВ === */
+/* Токены (можно рядом с остальными в :root) */
+:root {
+  /* ~в 2 раза крупнее, чем текущая .lead */
+  --fs-hero-subtitle: clamp(18px, 1.05vw, 20px);
+  --fs-film-lead: clamp(18px, 1.05vw, 20px);
+}
+
+/* Применение */
+.hero__subtitle {
+  font-size: var(--fs-hero-subtitle);
+  line-height: 1.45;
+  max-width: 70ch;
+  margin: 0.6em auto 1.1em;
+}
+
+.film__lead {
+  font-size: var(--fs-film-lead);
+  line-height: 1.5;
+  max-width: 70ch;
+  margin: 0.6em 0 1.1em;
+}
+
+/* усиление читабельности поверх видео/фото */
+.hero__subtitle,
+.film__lead {
+  text-shadow: 0 2px 6px var(--shadow-on-media-dark-1),
+    0 0 18px var(--shadow-on-media-dark-2);
+}
+
+/* в светлой теме — мягкое «свечение», чтобы не терялась контрастность */
+:root[data-theme="light"] .hero__subtitle,
+:root[data-theme="light"] .film__lead {
+  text-shadow: 0 2px 6px var(--glow-on-media-light-1),
+    0 0 18px var(--glow-on-media-light-2);
+}
+
+/* чуть свободнее на больших экранах */
+@media (min-width: 900px) {
+  .hero__subtitle {
+    margin-bottom: 1.25em;
+  }
+  .film__lead {
+    margin-bottom: 1.25em;
+  }
+}
+
+/* === 2) БАЗОВЫЙ ТЕКСТ НЕ МЕНЬШЕ 16PX === */
+/* замените ваш токен — было: clamp(14px, 1.05vw, 16px) */
+:root {
+  --fs-base: clamp(16px, 1.05vw, 18px);
 }

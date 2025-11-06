@@ -9,6 +9,10 @@
       content="6 дней / 5 ночей · Комфорт+ · Белуха, Уймон, Башталинское плато. Пройдите по тропам, где Николай Рерих искал Беловодье."
     />
     <link
+      href="https://unpkg.com/maplibre-gl@3.6.1/dist/maplibre-gl.css"
+      rel="stylesheet"
+    />
+    <link
       rel="preload"
       href="assets/fonts/inter-regular.woff2"
       as="font"
@@ -587,6 +591,41 @@
       </div>
     </section>
 
+    <section class="map-section" id="map">
+      <div class="map-wrap">
+        <div class="map-card map-fog">
+          <div id="mapRoute" aria-label="Карта маршрута"></div>
+          <div class="map-attrib">
+            ©
+            <a
+              href="https://www.openstreetmap.org/copyright"
+              target="_blank"
+              rel="noopener"
+              >OpenStreetMap</a
+            >
+            contributors
+          </div>
+        </div>
+
+        <aside class="map-panel">
+          <h2 class="map-title">Карта маршрута</h2>
+          <p class="map-sub">≈600 км • высота до 2600 м • набор ≈ 1000 м</p>
+
+          <div class="toolbar">
+            <button class="btn btn--accent" id="playRoute">
+              Показать маршрут
+            </button>
+            <button class="btn" id="resetView">Сбросить</button>
+          </div>
+
+          <div class="poi-list" id="poiList"></div>
+          <div class="meta">
+            Протяжённость маршрута: <b><span id="distKm">0</span> км</b>
+          </div>
+        </aside>
+      </div>
+    </section>
+
     <!-- ==== MODAL: Кинотеатр ==== -->
     <div class="cinema" id="cinema" hidden>
       <div class="cinema__backdrop" data-cinema-close></div>
@@ -644,7 +683,7 @@
         </nav>
       </div>
     </footer>
-
+    <script src="https://unpkg.com/maplibre-gl@3.6.1/dist/maplibre-gl.js"></script>
     <script src="assets/js/ui.js" defer></script>
     <script src="assets/js/anim.js" defer></script>
     <script src="assets/js/main.js" defer></script>

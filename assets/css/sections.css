@@ -210,15 +210,15 @@
   padding: 0.55em 0.9em;
   border-radius: 999px;
   font-weight: 600;
-  font-size: clamp(13px, 1vw, 14px);
+  font-size: clamp(15px, 1vw, 17px);
   background: rgba(0, 0, 0, 0.28);
   color: #fff;
   border: 1px solid rgba(255, 255, 255, 0.35);
   backdrop-filter: blur(6px);
 }
 [data-theme="light"] .chip {
-  background: rgba(0, 0, 0, 0.06);
-  color: #222;
+  background: rgba(0, 0, 0, 0.26);
+  color: #fff;
   border-color: rgba(0, 0, 0, 0.15);
 }
 
@@ -323,10 +323,11 @@
   font-family: var(--font-head);
   font-size: var(--fs-h2);
   margin-bottom: 0.3em;
+  color: #fff;
 }
 
 .route__subtitle {
-  color: var(--clr-muted);
+  color: #fff;
   margin-bottom: 3em;
   font-size: var(--fs-lead);
 }
@@ -522,4 +523,157 @@
     left: 12px;
     transform: none;
   }
+}
+
+/* ==== ROUTE MAP (theme-aware) ==== */
+.map-section {
+  position: relative;
+  isolation: isolate;
+  padding: clamp(48px, 6vw, 80px) 0;
+  background: linear-gradient(180deg, var(--clr-bg) 0%, var(--clr-bg-2) 100%);
+  color: var(--clr-text);
+}
+
+.map-wrap {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: clamp(16px, 3.5vw, 28px);
+  align-items: stretch;
+}
+@media (max-width: 900px) {
+  .map-wrap {
+    grid-template-columns: 1fr;
+  }
+}
+
+.map-card,
+.map-panel {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: color-mix(in oklab, var(--clr-surface) 100%, transparent 0%);
+  border: 1px solid color-mix(in oklab, var(--clr-text) 18%, transparent);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(6px);
+  padding: 10px;
+}
+.map-card {
+  min-height: 520px;
+}
+#mapRoute {
+  position: absolute;
+  inset: 0;
+}
+
+.map-title {
+  font-size: clamp(22px, 3.2vw, 32px);
+  margin: 0 0 0.25em;
+  color: var(--clr-text);
+}
+.map-sub {
+  opacity: 0.85;
+  margin: 0 0 1em;
+  color: var(--clr-muted);
+}
+
+.poi-list {
+  display: grid;
+  gap: 10px;
+  margin: 14px 0 18px;
+}
+.poi-btn,
+.btn {
+  appearance: none;
+  cursor: pointer;
+  font-weight: 700;
+  border-radius: 12px;
+  padding: 10px 14px;
+  border: 1px solid color-mix(in oklab, var(--clr-text) 16%, transparent);
+  background: color-mix(in oklab, var(--clr-surface) 100%, transparent 0%);
+  color: var(--clr-text);
+  transition: 0.2s ease;
+}
+.poi-btn:hover,
+.btn:hover {
+  border-color: color-mix(in oklab, var(--clr-accent) 55%, var(--clr-text) 20%);
+  box-shadow: 0 8px 24px color-mix(in oklab, var(--clr-accent) 18%, transparent);
+}
+
+.btn--accent {
+  background: var(--clr-accent);
+  color: var(--clr-on-accent);
+  border-color: color-mix(in oklab, var(--clr-accent) 80%, #000 20%);
+}
+.btn--accent:hover {
+  filter: brightness(1.03);
+  box-shadow: 0 10px 26px
+    color-mix(in oklab, var(--clr-accent) 35%, transparent);
+}
+
+.meta {
+  margin-top: 12px;
+  opacity: 0.85;
+  font-size: 14px;
+  color: var(--clr-muted);
+}
+
+/* атрибуция карты — тоже из токенов */
+.map-attrib {
+  position: absolute;
+  right: 8px;
+  bottom: 6px;
+  z-index: 5;
+  background: color-mix(in oklab, var(--clr-bg) 45%, transparent);
+  color: var(--clr-text);
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 11px;
+}
+.map-attrib a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+/* “дымка” поверх карты — на токенах */
+.map-fog::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  --fog-1: color-mix(in oklab, #fff 22%, var(--clr-bg) 0%);
+  --fog-2: color-mix(in oklab, #fff 16%, var(--clr-bg) 0%);
+  background: radial-gradient(36% 24% at 70% 16%, var(--fog-1), transparent 60%),
+    radial-gradient(40% 28% at 25% 70%, var(--fog-2), transparent 60%);
+  mix-blend-mode: screen;
+  animation: fog 30s linear infinite;
+  opacity: 0.35;
+}
+@keyframes fog {
+  0% {
+    background-position: 0 0, 0 0;
+  }
+  50% {
+    background-position: 6% 3%, -4% 5%;
+  }
+  100% {
+    background-position: 0 0, 0 0;
+  }
+}
+
+/* карта MapLibre вписывается в тему по рамкам/скруглениям */
+.maplibregl-canvas {
+  outline: none;
+}
+
+/* светлая тема: чуть мягче стекло и дымка */
+:root[data-theme="light"] .map-card,
+:root[data-theme="light"] .map-panel {
+  border-color: color-mix(in oklab, #000 12%, transparent);
+  box-shadow: 0 16px 46px rgba(0, 0, 0, 0.12);
+}
+:root[data-theme="light"] .map-fog::after {
+  opacity: 0.25;
 }

@@ -1,12 +1,13 @@
 <?php
 // sendtg.php — отправка формы в Telegram (продакшн)
 header('Content-Type: application/json; charset=utf-8');
+require_once __DIR__ . '/config.php';
 
 // === НАСТРОЙКИ ===
-$TOKEN   = '8042188223:AAGiQLFwnSYK86FX0O3dMUbsj6dPK-1xwLc';
-$CHAT_ID = '303648524';              // можно несколько через запятую: "111,222"
+$TOKEN   = TG_BOT_TOKEN;
+$CHAT_ID = TG_CHAT_ID;
+$TG_IP   = defined('TG_IP') ? TG_IP : '149.154.167.220';
 $TG_HOST = 'api.telegram.org';
-$TG_IP   = '149.154.167.220';        // обнови из nslookup при необходимости
 date_default_timezone_set('Europe/Vienna');
 
 // Разрешаем только POST с JSON

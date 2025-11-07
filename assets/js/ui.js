@@ -49,13 +49,45 @@ function bindPopup() {
     }
   });
   // simple submit
-  document.getElementById("bookingForm")?.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const fd = new FormData(e.currentTarget);
-    console.log("Booking form:", Object.fromEntries(fd.entries()));
-    alert("Заявка отправлена! Мы свяжемся с вами.");
-    e.currentTarget.closest(".popup").hidden = true;
-  });
+  document
+    .getElementById("bookingForm")
+    ?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const form = e.currentTarget;
+      const btn = form.querySelector('[type="submit"]');
+      const fd = new FormData(form);
+      const data = Object.fromEntries(fd.entries());
+      const prev = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = "Отправка...";
+
+      try {
+        const res = await fetch("sendtg.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: data.name?.trim(),
+            contact: data.contact?.trim(),
+            dates: data.dates?.trim(),
+            message: data.message?.trim(),
+            meta: { url: location.href },
+          }),
+        });
+        const json = await res.json().catch(() => ({}));
+        if (!res.ok || json.ok === false) {
+          throw new Error(JSON.stringify(json));
+        }
+        alert("Заявка отправлена! Спасибо.");
+        form.reset();
+        form.closest(".popup").hidden = true;
+      } catch (err) {
+        alert("Ошибка: " + err.message);
+        console.warn(err);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = prev;
+      }
+    });
 }
 
 // === Cinema (модальный плеер) — iOS-safe ===

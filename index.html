@@ -6,7 +6,7 @@
     <title>Путь Рериха — авторский тур по Алтаю</title>
     <meta
       name="description"
-      content="6 дней / 5 ночей · Комфорт+ · Белуха, Уймон, Башталинское плато. Пройдите по тропам, где Николай Рерих искал Беловодье."
+      content="6 дней / 5 ночей · Комфорт+ · Белуха, Уймон, Башталинское плато ----Пройдите по тропам, где Николай Рерих искал Беловодье, и услышите своё сердце"
     />
     <link
       rel="preload"
@@ -124,36 +124,55 @@
         class="hero__video"
         autoplay
         muted
-        loop
         playsinline
-        webkit-playsinline
+        loop
         preload="metadata"
-        poster="assets/img/poster.webp"
-        preload="none"
+        poster="assets/img/poster.jpg"
       >
         <source src="assets/video/hero-bg.mp4" type="video/mp4" />
-        Ваш браузер не поддерживает видео.
       </video>
+
+      <!-- Фолбэк-постер для iOS/low power -->
+      <img
+        class="hero__fallback"
+        src="assets/img/poster.jpg"
+        alt=""
+        aria-hidden="true"
+      />
+
       <script>
         (function () {
           const v = document.querySelector(".hero__video");
+          const fb = document.querySelector(".hero__fallback");
           if (!v) return;
-          function playWhenIdle() {
+
+          function tryPlay() {
+            // если удалось — скрываем фолбэк
+            v.play()
+              .then(() => fb && (fb.hidden = true))
+              .catch(() => {
+                // не смогли автоплеить — показываем постер
+                fb && (fb.hidden = false);
+              });
+          }
+
+          // Первичная попытка
+          tryPlay();
+
+          // Жест пользователя как резерв
+          const once = () => {
+            removeEventListener("touchstart", once, { passive: true });
+            tryPlay();
+          };
+          addEventListener("touchstart", once, { passive: true });
+
+          // На iOS иногда помогает явный load перед play
+          setTimeout(() => {
             try {
               v.load();
-              v.play().catch(() => {});
+              tryPlay();
             } catch (e) {}
-          }
-          addEventListener("touchstart", once, { passive: true });
-          addEventListener("scroll", once, { passive: true });
-          function once() {
-            removeEventListener("touchstart", once);
-            removeEventListener("scroll", once);
-            playWhenIdle();
-          }
-          "requestIdleCallback" in window
-            ? requestIdleCallback(playWhenIdle, { timeout: 2500 })
-            : setTimeout(playWhenIdle, 1200);
+          }, 800);
         })();
       </script>
 
@@ -162,9 +181,10 @@
           Путь Рериха — авторский тур по Алтаю
         </h1>
         <p class="hero__subtitle on-media">
-          6 дней / 5 ночей · Комфорт+ · Белуха, Уймон, Башталинское плато<br />
+          6 дней / 5 ночей · Комфорт+ · Белуха, Уймон, Башталинское плато <br />
           Пройдите по тропам, где Николай Рерих искал Беловодье, и услышите своё
-          сердце.
+          сердце. <br />
+          Вас ждёт уникальное путешествие в самое сердце Алтая!
         </p>
         <div class="hero__actions on-media">
           <button class="btn btn--primary" data-open-popup="booking">
@@ -364,7 +384,6 @@
 
     <!-- ==== SECTION: Фильм об Алтае ==== -->
     <section class="section film reveal" id="film">
-      <!-- фон: короткий луп (если файла нет, покажется постер) -->
       <div class="film__bg">
         <video
           class="film__loop"
@@ -457,9 +476,8 @@
               </button>
               <div class="route__body">
                 <p>
-                  Встреча в Бийске — старинных воротах Алтая. Мы начнём путь с
-                  лёгкой прогулки по купеческим улочкам, заглянем в Пассаж
-                  Второва, узнаем о первых путешественниках, покорявших горы.
+                  Встреча в Бийске — вратах Алтая. Мы начнём путь с лёгкой
+                  прогулки по купеческим улочкам, заглянем в Пассаж Второва.
                   Вечером — ужин и обрядовая баня с пар-мастером: очищение тела
                   и ума, настрой на путешествие и соединение с энергией Алтая.
                 </p>
@@ -535,10 +553,11 @@
               </button>
               <div class="route__body">
                 <p>
-                  Пожалуй, самый символичный день — путь к Башталинскому плато и
-                  у подножия Белухи. Это место силы, где воздух буквально
-                  вибрирует чистотой. Вы почувствуете, что Алтай говорит с вами
-                  напрямую — через ветер, свет и покой.
+                  Пожалуй, самый символичный день — путь к Башталинскому плато,
+                  где в ясную погоду открывается вид на священную Белуху. Это
+                  место силы, где воздух буквально вибрирует чистотой. Вы
+                  почувствуете, что Алтай говорит с вами напрямую — через ветер,
+                  свет и покой.
                 </p>
               </div>
             </li>
@@ -762,7 +781,7 @@
             </header>
 
             <p class="card-text">
-              Манжерок 5⭐ • Klever Resort & Spa • Эко-отель «Кедровый остров» •
+              Манжерок 5⭐ • Гранд Шале Алтай • Эко-отель «Кедровый остров» •
               Усадьба Теректа • Парк-отель «Роща»
             </p>
 
@@ -1011,7 +1030,7 @@
 
       <div class="container philosophy-content">
         <h2 class="reveal" id="philosophyTitle on-media">
-          Белуха и Беловодье — путь к себе
+          Алтай - место, где я слышу своё сердце!
         </h2>
 
         <blockquote class="philosophy-quote">
@@ -1370,11 +1389,11 @@
             ><span class="proof__unit">/5</span>
             <small>средняя оценка</small>
           </div>
-          <div class="proof__item">
+          <!-- <div class="proof__item">
             <span class="proof__num">12</span
             ><span class="proof__unit">лет</span>
             <small>опыта организации</small>
-          </div>
+          </div> -->
           <div class="proof__item">
             <span class="proof__num">3000+</span>
             <small>участников</small>
@@ -1398,8 +1417,8 @@
         <h2 class="financial__title reveal">Финансовые гарантии и документы</h2>
         <p class="financial__subtitle">
           Организатор: ООО «АлтайЦентр» · Туроператор по Республике Алтай<br />
-          Финобеспечение, страховка Росгосстрах, возраст от&nbsp;10&nbsp;лет,
-          групповые и индивидуальные туры.
+          Финобеспечение, страховка СПАО «Ингосстрах» · групповые и
+          индивидуальные туры.
         </p>
 
         <ul class="financial__icons">

@@ -3,10 +3,23 @@
    ============================== */
 .hero {
   position: relative;
-  min-height: 105dvh;
+  overflow: hidden;
   display: grid;
   place-items: center;
+  /* фолбэк для старых браузеров */
+  min-height: 105vh;
+  /* корректно для мобильных (без адресной строки) */
+  min-height: 105svh;
+  /* для тех, кто понимает dvh/lvh */
+  min-height: 105dvh;
   isolation: isolate;
+}
+
+/* на iOS можно ещё так (если нужно): */
+@supports (-webkit-touch-callout: none) {
+  .hero {
+    min-height: -webkit-fill-available;
+  }
 }
 
 .hero__video {
@@ -18,6 +31,25 @@
   z-index: 0;
 }
 
+.hero__fallback {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+.hero__fallback {
+  z-index: 0;
+}
+.hero__video {
+  z-index: 1;
+}
+.hero .on-media {
+  position: relative;
+  z-index: 2;
+}
 /* — Мягкий световой оверлей поверх видео — */
 .hero__overlay {
   position: absolute;

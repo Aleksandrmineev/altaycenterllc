@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Спасибо — АлтайЦентр</title>
+
+    <!-- FAVICONS -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="assets/favicon/site.webmanifest" />
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- Fonts preload (как в проекте) -->
+    <link
+      rel="preload"
+      href="assets/fonts/inter-regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="assets/fonts/montserrat-bold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <!-- Базовые стили проекта -->
+    <link rel="stylesheet" href="assets/css/global.css" />
+    <link rel="stylesheet" href="assets/css/layout.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+
+    <!-- Стили страницы "Спасибо" -->
+    <link rel="stylesheet" href="assets/css/thankyou.css" />
+  </head>
+
+  <body class="page page--thankyou">
+    <!-- Шапка как есть -->
+    <header class="site-header">
+      <div class="container header__row">
+        <button
+          class="burger-btn"
+          id="burgerOpen"
+          aria-label="Открыть меню"
+          aria-controls="siteBurger"
+          aria-expanded="false"
+        >
+          <span></span><span></span><span></span>
+        </button>
+
+        <a class="brand" href="/" aria-label="АлтайЦентр — главная">
+          <img
+            src="assets/img/logo-altaycenter-white.png"
+            alt="АлтайЦентр"
+            width="140"
+            height="auto"
+            class="brand__logo"
+          />
+          <span class="brand__text"></span>
+        </a>
+
+        <nav class="header__actions">
+          <a class="link-muted" href="contacts/index.html">Контакты</a>
+          <button
+            id="themeToggle"
+            class="btn btn--ghost"
+            aria-label="Переключить тему"
+          >
+            🌙
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Крошки -->
+    <header class="container">
+      <nav class="breadcrumbs"><a href="index.html">Главная</a> · Спасибо</nav>
+    </header>
+
+    <!-- Основной блок Спасибо -->
+    <main class="thankyou">
+      <!-- Декоративный SVG фон -->
+      <svg
+        class="thankyou__bg"
+        viewBox="0 0 1200 800"
+        aria-hidden="true"
+        focusable="false"
+        preserveAspectRatio="none"
+      >
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+            <stop
+              offset="0%"
+              stop-color="var(--clr-accent, #c9a14a)"
+              stop-opacity="0.18"
+            />
+            <stop
+              offset="100%"
+              stop-color="var(--clr-accent, #c9a14a)"
+              stop-opacity="0"
+            />
+          </linearGradient>
+          <radialGradient id="g2" cx="70%" cy="30%" r="60%">
+            <stop
+              offset="0%"
+              stop-color="var(--clr-accent, #c9a14a)"
+              stop-opacity="0.20"
+            />
+            <stop
+              offset="100%"
+              stop-color="var(--clr-accent, #c9a14a)"
+              stop-opacity="0"
+            />
+          </radialGradient>
+        </defs>
+        <rect width="1200" height="800" fill="url(#g1)" />
+        <circle cx="980" cy="140" r="260" fill="url(#g2)" />
+        <circle cx="160" cy="620" r="220" fill="url(#g2)" />
+      </svg>
+
+      <section class="thankyou__card" role="status" aria-live="polite">
+        <div class="thankyou__icon" aria-hidden="true">
+          <!-- галочка -->
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M20 6L9 17l-5-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+        <h1 class="thankyou__title">Спасибо! Заявка отправлена</h1>
+        <p class="thankyou__lead">
+          Мы свяжемся с вами в ближайшее время через указанный контакт. Письмо с
+          подтверждением и детали поездки придут дополнительно.
+        </p>
+
+        <div class="thankyou__actions">
+          <a href="index.html" class="btn btn--primary">На главную</a>
+          <a href="contacts/index.html" class="btn btn--ghost"
+            >Связаться с нами</a
+          >
+        </div>
+
+        <p class="thankyou__hint">
+          Автоматический переход на главную через <span id="count">8</span> сек.
+        </p>
+      </section>
+    </main>
+
+    <!-- Низ страницы + иконбар + скроллтоп: оставляем как есть -->
+    <footer class="site-footer">
+      <div class="container footer__row">
+        <nav class="iconbar" aria-label="Быстрая навигация">
+          <!-- … можно оставить или скрыть на этой странице -->
+          <div class="iconbar__cell">
+            <a href="index.html#why" class="iconbar__item" aria-label="О туре">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="var(--clr-accent)"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M3 20h18l-6.9-14.6a2.3 2.3 0 0 0-4.2 0L3 20z" />
+                <path d="M7.5 11l2 2.5l2.5-2.5l2 3l2.5-2" />
+              </svg>
+            </a>
+            <small>О туре</small>
+          </div>
+          <div class="iconbar__cell">
+            <a
+              href="index.html#route"
+              class="iconbar__item"
+              aria-label="Программа"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="var(--clr-accent)"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M3 7l6-3l6 3l6-3v13l-6 3l-6-3l-6 3V7z" />
+                <path d="M9 12v.01M6 13v.01M17 15l-4-4M13 15l4-4" />
+              </svg>
+            </a>
+            <small>Программа</small>
+          </div>
+          <div class="iconbar__cell">
+            <a href="index.html#map" class="iconbar__item" aria-label="Карта">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="var(--clr-accent)"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="9" />
+                <path d="m16 8-4 8l-4-4l8-4" />
+              </svg>
+            </a>
+            <small>Карта</small>
+          </div>
+          <div class="iconbar__cell">
+            <a
+              href="index.html#pricingTitle"
+              class="iconbar__item"
+              aria-label="Стоимость"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="var(--clr-accent)"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path d="M3 10h18M8 15h.01M16 15h.01" />
+              </svg>
+            </a>
+            <small>Стоимость</small>
+          </div>
+          <div class="iconbar__cell">
+            <a
+              href="index.html#reviews"
+              class="iconbar__item"
+              aria-label="Отзывы"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="var(--clr-accent)"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                />
+              </svg>
+            </a>
+            <small>Отзывы</small>
+          </div>
+          <div class="iconbar__cell">
+            <a href="contacts/" class="iconbar__item" aria-label="Контакты">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="var(--clr-accent)"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path d="M3 7l9 6l9-6" />
+              </svg>
+            </a>
+            <small>Контакты</small>
+          </div>
+          <div class="iconbar__cell">
+            <a
+              href="https://t.me/aamineev"
+              class="iconbar__item"
+              target="_blank"
+              rel="noopener"
+              aria-label="Разработка"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="var(--clr-accent)"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="3" y="4" width="18" height="16" rx="2" />
+                <path d="M8 10h8M8 14h5" />
+              </svg>
+            </a>
+            <small>Разработка</small>
+          </div>
+        </nav>
+      </div>
+    </footer>
+
+    <button id="scrollTop" class="scrolltop" aria-label="Наверх" title="Наверх">
+      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          d="M12 19V5"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+        <path
+          d="M6 11l6-6 6 6"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </button>
+
+    <!-- Скрипты проекта -->
+    <link rel="stylesheet" href="assets/css/burger.css" />
+    <script src="assets/js/burger.js" defer></script>
+    <script src="assets/js/ui.js" defer></script>
+    <script src="assets/js/anim.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
+
+    <!-- Автопереход на главную -->
+    <script>
+      (function () {
+        const s = 8; // секунд до перехода
+        const el = document.getElementById("count");
+        let left = s;
+        const tick = () => {
+          if (el) el.textContent = String(left);
+          if (left <= 0) {
+            location.href = "index.html";
+            return;
+          }
+          left -= 1;
+          setTimeout(tick, 1000);
+        };
+        tick();
+      })();
+    </script>
+  </body>
+</html>

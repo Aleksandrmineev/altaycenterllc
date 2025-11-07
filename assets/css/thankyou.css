@@ -1,0 +1,100 @@
+.page--thankyou {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+}
+
+/* холст */
+.thankyou {
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: clamp(40px, 7dvh, 96px) 16px;
+  overflow: hidden;
+}
+
+/* фоновая подложка */
+.thankyou__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+/* карточка */
+.thankyou__card {
+  position: relative;
+  z-index: 1;
+  width: min(880px, 94%);
+  padding: clamp(20px, 4dvh, 40px);
+  border-radius: var(--radius, 16px);
+  color: var(--clr-text, #eaeaea);
+  background: color-mix(in oklab, var(--clr-surface, #111) 86%, transparent);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow, 0 20px 50px rgba(0, 0, 0, 0.35));
+  border: 1px solid
+    color-mix(in oklab, var(--clr-accent, #c9a14a) 25%, #fff 75%);
+  text-align: center;
+}
+
+/* иконка */
+.thankyou__icon {
+  width: 72px;
+  height: 72px;
+  margin-inline: auto;
+  margin-bottom: 12px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  color: var(--clr-accent, #c9a14a);
+  background: color-mix(in oklab, var(--clr-accent, #c9a14a) 20%, transparent);
+  box-shadow: inset 0 0 0 2px
+    color-mix(in oklab, var(--clr-accent, #c9a14a) 55%, #ffffff 45%);
+}
+.thankyou__icon svg {
+  width: 36px;
+  height: 36px;
+}
+
+/* заголовок и текст */
+.thankyou__title {
+  font-family: var(--font-head, "Montserrat", system-ui);
+  font-size: clamp(22px, 3.2vw, 36px);
+  line-height: 1.15;
+  margin: 8px 0 12px;
+}
+.thankyou__lead {
+  font-size: clamp(16px, 2.1vw, 18px);
+  color: var(--clr-text, #ddd);
+  opacity: 0.9;
+  margin: 0 auto clamp(18px, 3vh, 28px);
+  max-width: 62ch;
+}
+
+/* кнопки */
+.thankyou__actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.thankyou__hint {
+  margin: 0;
+  font-size: 14px;
+  color: var(--clr-text-light, #aaa);
+}
+
+/* адаптив */
+@media (max-width: 520px) {
+  .thankyou__card {
+    padding: 22px;
+  }
+  .thankyou__actions .btn {
+    width: 100%;
+  }
+}

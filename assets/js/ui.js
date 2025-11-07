@@ -73,15 +73,14 @@ function bindPopup() {
             meta: { url: location.href },
           }),
         });
-        const json = await res.json().catch(() => ({}));
-        if (!res.ok || json.ok === false) {
-          throw new Error(JSON.stringify(json));
-        }
-        alert("Заявка отправлена! Спасибо.");
-        form.reset();
-        form.closest(".popup").hidden = true;
+
+        const json = await res.json();
+        if (!res.ok || !json.ok) throw new Error(json.error || "Send error");
+
+        // ✅ после успешной отправки
+        window.location.href = "thankyou.html";
       } catch (err) {
-        alert("Ошибка: " + err.message);
+        alert("Не удалось отправить. Попробуйте позже.");
         console.warn(err);
       } finally {
         btn.disabled = false;

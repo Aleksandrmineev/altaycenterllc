@@ -8,6 +8,15 @@
       name="description"
       content="6 дней / 5 ночей · Комфорт+ · Белуха, Уймон, Башталинское плато. Пройдите по тропам, где Николай Рерих искал Беловодье."
     />
+    <link
+      rel="preload"
+      as="image"
+      href="assets/img/poster.webp"
+      fetchpriority="high"
+    />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link rel="preconnect" href="https://unpkg.com" crossorigin />
+
     <!-- ===============================
      FAVICONS
      =============================== -->
@@ -84,6 +93,8 @@
         </button>
         <a class="brand" href="/" aria-label="АлтайЦентр — главная">
           <img
+            loading="lazy"
+            decoding="async"
             src="assets/img/logo-altaycenter-white.png"
             alt="АлтайЦентр"
             width="140"
@@ -118,10 +129,33 @@
         webkit-playsinline
         preload="metadata"
         poster="assets/img/poster.webp"
+        preload="none"
       >
         <source src="assets/video/hero-bg.mp4" type="video/mp4" />
         Ваш браузер не поддерживает видео.
       </video>
+      <script>
+        (function () {
+          const v = document.querySelector(".hero__video");
+          if (!v) return;
+          function playWhenIdle() {
+            try {
+              v.load();
+              v.play().catch(() => {});
+            } catch (e) {}
+          }
+          addEventListener("touchstart", once, { passive: true });
+          addEventListener("scroll", once, { passive: true });
+          function once() {
+            removeEventListener("touchstart", once);
+            removeEventListener("scroll", once);
+            playWhenIdle();
+          }
+          "requestIdleCallback" in window
+            ? requestIdleCallback(playWhenIdle, { timeout: 2500 })
+            : setTimeout(playWhenIdle, 1200);
+        })();
+      </script>
 
       <div class="container hero__inner reveal">
         <h1 class="hero__title on-media text-outline">
@@ -337,6 +371,7 @@
           autoplay
           muted
           playsinline
+          preload="none"
           webkit-playsinline
           loop
           preload="none"
@@ -743,6 +778,7 @@
                   src="assets/img/housing/01.jpg"
                   alt="Манжерок 5⭐"
                   loading="lazy"
+                  decoding="async"
                 />
               </a>
 
@@ -757,6 +793,7 @@
                   src="assets/img/housing/02.jpg"
                   alt="Klever Resort & Spa"
                   loading="lazy"
+                  decoding="async"
                 />
               </a>
             </div>
@@ -810,6 +847,7 @@
                   src="assets/img/housing/05.jpg"
                   alt="Ужин в ресторанчике"
                   loading="lazy"
+                  decoding="async"
                 />
               </a>
 
@@ -824,6 +862,7 @@
                   src="assets/img/housing/06.jpg"
                   alt="Вегетарианское меню"
                   loading="lazy"
+                  decoding="async"
                 />
               </a>
             </div>
@@ -1016,6 +1055,7 @@
                       src="assets/img/reviews/u1.jpg"
                       alt="Фото Мария К."
                       loading="lazy"
+                      decoding="async"
                     />
                     <div>
                       <strong class="review-card__name">Мария К.</strong>
@@ -1072,6 +1112,7 @@
                       src="assets/img/reviews/u2.jpg"
                       alt="Фото Иван П."
                       loading="lazy"
+                      decoding="async"
                     />
                     <div>
                       <strong class="review-card__name">Иван П.</strong>
@@ -1123,6 +1164,7 @@
                       src="assets/img/reviews/u3.jpg"
                       alt="Фото Светлана Р."
                       loading="lazy"
+                      decoding="async"
                     />
                     <div>
                       <strong class="review-card__name">Светлана Р.</strong>
@@ -1174,6 +1216,7 @@
                       src="assets/img/reviews/u4.jpg"
                       alt="Фото Дмитрий С."
                       loading="lazy"
+                      decoding="async"
                     />
                     <div>
                       <strong class="review-card__name">Дмитрий С.</strong>
@@ -1219,12 +1262,9 @@
               <li class="splide__slide">
                 <article class="review-card card">
                   <header class="review-card__top">
-                    <img
-                      class="review-card__avatar"
-                      src="assets/img/reviews/u5.jpg"
-                      alt="Фото Елена В."
-                      loading="lazy"
-                    />
+                    <img class="review-card__avatar"
+                    src="assets/img/reviews/u5.jpg" alt="Фото Елена В."
+                    loading="lazy" decoding="async"" />
                     <div>
                       <strong class="review-card__name">Елена В.</strong>
                       <div class="review-card__meta">
@@ -1274,6 +1314,7 @@
                       src="assets/img/reviews/u6.jpg"
                       alt="Фото Артём Л."
                       loading="lazy"
+                      decoding="async"
                     />
                     <div>
                       <strong class="review-card__name">Артём Л.</strong>
@@ -1470,6 +1511,7 @@
           class="cinema__video"
           controls
           playsinline
+          preload="none"
           preload="metadata"
           poster="assets/img/altai-poster.jpeg"
         >

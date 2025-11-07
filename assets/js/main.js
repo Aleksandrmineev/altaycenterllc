@@ -330,3 +330,28 @@ document.addEventListener("DOMContentLoaded", function () {
     }).mount();
   }
 });
+
+const once = (el, cb) =>
+  new IntersectionObserver(
+    (e, o) => {
+      if (e[0].isIntersecting) {
+        o.disconnect();
+        cb();
+      }
+    },
+    { rootMargin: "200px" }
+  ).observe(el);
+
+const reviews = document.querySelector("#reviews");
+if (reviews) {
+  once(reviews, async () => {
+    await Promise.all([
+      import(
+        "https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"
+      ),
+      import("https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"),
+    ]);
+    // init Splide + GLightbox здесь
+    document.dispatchEvent(new Event("reviews:ready"));
+  });
+}

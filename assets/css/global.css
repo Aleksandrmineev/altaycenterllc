@@ -232,3 +232,13 @@ video {
 :root {
   --fs-base: clamp(16px, 1.05vw, 18px);
 }
+
+.section,
+.route,
+.map-section,
+.section-pricing,
+.reviews,
+.financial {
+  content-visibility: auto;
+  contain-intrinsic-size: 800px; /* приблизительная высота для рандеринга-плейсхолдера */
+}

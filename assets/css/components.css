@@ -195,74 +195,107 @@
   }
 }
 
-/* Popup */
+/* ======================================
+   POPUP (адаптивный и доступный)
+   ====================================== */
+
 .popup[hidden] {
   display: none;
 }
+
 .popup {
   position: fixed;
   inset: 0;
   z-index: 100;
+  display: flex;
+  align-items: flex-start; /* окно появляется сверху */
+  justify-content: center;
+  padding: 10px; /* гарантированные отступы по краям */
+  overflow: auto; /* если окно выше вьюпорта */
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
 }
+
 .popup__backdrop {
-  position: absolute;
+  position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.55);
 }
+
 .popup__window {
   position: relative;
-  margin: 6vh auto 0;
-  background: var(--clr-surface);
-  backdrop-filter: blur(8px);
-  width: min(92%, 600px);
-  border-radius: var(--radius);
+  box-sizing: border-box;
+  width: min(600px, calc(100vw - 20px)); /* 10px поля по сторонам */
+  max-height: calc(100dvh - 20px); /* 10px сверху и снизу */
+  margin-top: 6vh;
   padding: 24px;
-  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+  background: var(--clr-surface);
   color: var(--clr-text);
+  backdrop-filter: blur(8px);
+  box-shadow: var(--shadow);
+  overflow: auto; /* прокрутка содержимого */
 }
+
 .popup__close {
-  position: absolute;
+  position: sticky;
   top: 8px;
-  right: 8px;
+  float: right;
   border: 0;
   background: transparent;
   color: inherit;
   font-size: 24px;
   cursor: pointer;
 }
-.popup__title {
-  font-family: var(--font-head);
-  margin: 0 0 0.8em;
-}
+
+/* ======================================
+     FORM
+     ====================================== */
+
 .form__field {
   display: flex;
   flex-direction: column;
   gap: 6px;
   margin-bottom: 12px;
 }
+
 .form__field input,
 .form__field textarea {
+  min-width: 0;
+  padding: 12px;
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   background: rgba(0, 0, 0, 0.15);
   color: inherit;
-  padding: 12px;
 }
+
 .form__check {
   display: flex;
   align-items: center;
   gap: 10px;
   margin: 10px 0;
 }
+
 .form__actions {
   display: flex;
   gap: 10px;
+  flex-wrap: wrap;
   margin-top: 10px;
 }
+
 .form__note {
-  opacity: 0.8;
-  font-size: 0.95em;
   margin-top: 10px;
+  font-size: 0.95em;
+  opacity: 0.8;
+}
+
+/* ======================================
+     Мелкие экраны
+     ====================================== */
+@media (max-width: 360px) {
+  .popup__window {
+    padding: 16px;
+  }
 }
 
 /* Theme toggle icon simple */
